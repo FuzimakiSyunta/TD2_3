@@ -1,5 +1,5 @@
 ﻿#pragma once
-class ATK {
+class HEAL {
 public:
 	// デストラクタ
 
