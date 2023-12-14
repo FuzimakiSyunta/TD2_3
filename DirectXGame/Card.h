@@ -27,4 +27,7 @@ private:
 	int UseCard;
 	/// カードを捨てる
 	int Dispose;
+	/// カードを取る
+	bool TakeCard[20];
+	
 };

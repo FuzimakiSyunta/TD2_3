@@ -12,6 +12,7 @@ void Card::Initialize()
 void Card::Update() {
 
 	Decknumber = {static_cast<float>(rand() % 20 + 1)};
+
 	ImGui::Begin("Decknumber");
 	ImGui::Text("%f\n", Decknumber);
 	ImGui::End();
