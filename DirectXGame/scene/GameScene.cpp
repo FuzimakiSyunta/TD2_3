@@ -29,12 +29,11 @@ void GameScene::Initialize() {
 	
 }
 
-void GameScene::Update() {
-	/// 山札
-	card_->Update();
-}
 void GameScene::Update() 
 {
+	/// 山札
+	card_->Update();
+
 	size = sprite_->GetSize();
 
 	size.x = gauge_->GetGauge();
