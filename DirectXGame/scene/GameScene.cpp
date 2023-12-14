@@ -5,7 +5,10 @@
 
 GameScene::GameScene() {}
 
-GameScene::~GameScene() {}
+GameScene::~GameScene() 
+{
+	delete sprite_;
+}
 
 void GameScene::Initialize() {
 
@@ -16,14 +19,32 @@ void GameScene::Initialize() {
 	card_ = std::make_unique<Card>();
 	///山札
 	card_->Initialize();
+
+	//ゲージのスプライト読み込み
+	textureHandle_ = TextureManager::Load("Stamina.png");
+
+	sprite_ = Sprite::Create(textureHandle_, {100, 50});
+	gauge_ = std::make_unique<Gauge>();
+	gauge_->Initialize();
+	
 }
 
 void GameScene::Update() {
 	/// 山札
 	card_->Update();
 }
+void GameScene::Update() 
+{
+	size = sprite_->GetSize();
 
-void GameScene::Draw() {
+	size.x = gauge_->GetGauge();
+
+	sprite_->SetSize(size);
+
+	gauge_->Update();
+}
+
+void GameScene::Draw() { 
 
 	// コマンドリストの取得
 	ID3D12GraphicsCommandList* commandList = dxCommon_->GetCommandList();
@@ -61,6 +82,8 @@ void GameScene::Draw() {
 	/// <summary>
 	/// ここに前景スプライトの描画処理を追加できる
 	/// </summary>
+
+	sprite_->Draw();
 
 	// スプライト描画後処理
 	Sprite::PostDraw();
