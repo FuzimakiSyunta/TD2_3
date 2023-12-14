@@ -2,6 +2,7 @@
 #include "TextureManager.h"
 #include <cassert>
 
+
 GameScene::GameScene() {}
 
 GameScene::~GameScene() {}
@@ -11,9 +12,14 @@ void GameScene::Initialize() {
 	dxCommon_ = DirectXCommon::GetInstance();
 	input_ = Input::GetInstance();
 	audio_ = Audio::GetInstance();
+	///山札
+	card_->Initialize();
 }
 
-void GameScene::Update() {}
+void GameScene::Update() {
+	/// 山札
+	card_->Update();
+}
 
 void GameScene::Draw() {
 
