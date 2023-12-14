@@ -18,5 +18,16 @@ public:
 	/// </summary>
 	void Draw();
 
+	enum BUFFCard {
+		BUFF3, // 0
+		BUFF3, // 1
+	};
+
 private:
+
+	//カードを使う処理
+	void UseBUFF3();
+
+	//カードを捨てる処理
+	void DisposeBUFF3();
 };
