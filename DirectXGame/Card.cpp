@@ -3,15 +3,15 @@
 
 void Card::Initialize()
 {
-	Decknumber = 0;
+	Decknumber = 1;
 	/// 乱数の初期化(シード値の設定)
 	srand((unsigned int)time(nullptr));
-	Decknumber = {static_cast<float>(rand() % 3 + 1)};
+	
 }
 
 void Card::Update() {
 
-	
+	Decknumber = {static_cast<float>(rand() % 20 + 1)};
 	ImGui::Begin("Decknumber");
 	ImGui::Text("%f\n", Decknumber);
 	ImGui::End();

@@ -22,9 +22,9 @@ public:
 
 private:
 	/// 山札用のランダム変数
-	float Decknumber = 0;
-	// カードを使う
+	float Decknumber = 1;
+	/// カードを使う
 	int UseCard;
-	// カードを捨てる
+	/// カードを捨てる
 	int Dispose;
 };

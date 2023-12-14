@@ -12,6 +12,8 @@ void GameScene::Initialize() {
 	dxCommon_ = DirectXCommon::GetInstance();
 	input_ = Input::GetInstance();
 	audio_ = Audio::GetInstance();
+	/// 山札の生成
+	card_ = std::make_unique<Card>();
 	///山札
 	card_->Initialize();
 }
