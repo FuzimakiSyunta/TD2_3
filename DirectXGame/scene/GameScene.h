@@ -10,6 +10,7 @@
 #include "Card.h"
 
 #include "Gauge.h"
+#include "ObjectBreak.h"
 
 /// <summary>
 /// ゲームシーン
@@ -70,4 +71,7 @@ private: // メンバ変数
 	Vector2 size;
 	/// 山札
 	std::unique_ptr<Card> card_;
+
+	//オブジェクト
+	std::unique_ptr<ObjectBreak> objectBreak_;
 };

@@ -3,17 +3,34 @@
 void Gauge::Initialize() 
 {
 	//ゲージの初期化
-	gauge = 100.0f;
+	gauge_ = 1000.0f;
 	//シングルだから呼び出す
 	input_ = Input::GetInstance();
 }
 
 void Gauge::Update() 
 { 
-	if (input_->PushKey(DIK_SPACE))
+	if (gaugeCount == 0)
 	{
-		gauge -= 5.0f;
+		if (gauge_ >= 1) {
+			if (input_->PushKey(DIK_SPACE)) {
+				gauge_ -= 5.0f;
+			}
+		}
+		if (gauge_ <= 1)
+		{
+			gaugeCount = 1;
+		}
 	}
+	if (gaugeCount == 1)
+	{
+		
+	}
+	
+	
 }
 
-void Gauge::Draw() {}
+void Gauge::Draw() 
+{
+	
+}
