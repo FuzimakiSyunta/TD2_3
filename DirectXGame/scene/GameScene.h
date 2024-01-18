@@ -67,6 +67,12 @@ private: // メンバ変数
 	//ゲージ
 	std::unique_ptr<Gauge> gauge_;
 
+	//3Dモデル
+	std::unique_ptr<Model> model_;
+
+	//オブジェクト
+	std::unique_ptr<Model> modelObject_;
+
 	//表示の大きさ
 	Vector2 size;
 	/// 山札

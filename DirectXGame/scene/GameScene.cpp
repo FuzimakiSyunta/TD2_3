@@ -20,6 +20,15 @@ void GameScene::Initialize() {
 	///山札
 	card_->Initialize();
 
+	//ワールドトランスフォーム
+	worldTransform_.Initialize();
+
+	//ビュープロジェクション
+	viewProjection_.Initialize();
+
+	//3Dモデルの生成
+	model_.reset(Model::Create());
+
 	//ゲージのスプライト読み込み
 	textureHandle_ = TextureManager::Load("Stamina.png");
 
@@ -27,6 +36,10 @@ void GameScene::Initialize() {
 	gauge_ = std::make_unique<Gauge>();
 	gauge_->Initialize();
 	
+
+	//3Dモデルのロード
+	modelObject_.reset(Model::CreateFromOBJ("syanderia.png", true));
+
 }
 
 void GameScene::Update() 
