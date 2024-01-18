@@ -1,4 +1,6 @@
-﻿#include<time.h>
+﻿#pragma once
+#include<Input.h>
+
 
 class Card {
 public:
@@ -12,22 +14,35 @@ public:
 	/// <summary>
 	/// 更新
 	/// </summary>
-	void Update();
+	void DeckUpdate();
+
+	void HandCardUpdate();
 
 	/// <summary>
 	/// 描画
 	/// </summary>
 	void Draw();
 
+	void SetDecknumber(int decknumber) {decknumber_ = decknumber; }
 
 private:
 	/// 山札用のランダム変数
-	float Decknumber = 1;
-	/// カードを使う
-	int UseCard;
+	int decknumber_ = 1;
+	/*/// カードを使う
+	int useCard_;*/
 	/// カードを捨てる
-	int Dispose;
+	int dispose_;
 	/// カードを取る
-	bool TakeCard[20];
-	
+	bool takeCard_[20];
+	/// 一度でたカードの除外
+	bool deckFrag_[20];
+	///攻撃カード
+	bool isATCcard_ = false;
+	/// 防御カード
+	bool isDEFcard_ = false;
+	/// 回復カード
+	bool isHealcard_ = false;
+	///バフカード
+	bool isBufcard_ = false;
+
 };

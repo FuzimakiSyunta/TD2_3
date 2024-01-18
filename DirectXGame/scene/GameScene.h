@@ -8,7 +8,7 @@
 #include "ViewProjection.h"
 #include "WorldTransform.h"
 #include "Card.h"
-
+#include "CardOperator.h"
 #include "Gauge.h"
 
 /// <summary>
@@ -70,4 +70,7 @@ private: // メンバ変数
 	Vector2 size;
 	/// 山札
 	std::unique_ptr<Card> card_;
+
+	/// 
+	std::unique_ptr<CardOperator> cardOperator_;
 };

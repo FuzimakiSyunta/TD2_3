@@ -20,6 +20,11 @@ void GameScene::Initialize() {
 	///山札
 	card_->Initialize();
 
+	/// 
+	cardOperator_ = std::make_unique<CardOperator>();
+	/// 
+	cardOperator_->Initialize();
+
 	//ゲージのスプライト読み込み
 	textureHandle_ = TextureManager::Load("Stamina.png");
 
@@ -32,7 +37,10 @@ void GameScene::Initialize() {
 void GameScene::Update() 
 {
 	/// 山札
-	card_->Update();
+	card_->DeckUpdate();
+
+	//カード操作
+	cardOperator_->Update();
 
 	size = sprite_->GetSize();
 
