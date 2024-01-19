@@ -36,11 +36,17 @@ void GameScene::Initialize() {
 
 void GameScene::Update() 
 {
+	//カード操作
+	cardOperator_->Update();
 	/// 山札
 	card_->DeckUpdate();
 
-	//カード操作
-	cardOperator_->Update();
+	///
+	cardOperator_->FazeUpdate();
+	///
+	cardOperator_->TakeUpdate();
+
+
 
 	size = sprite_->GetSize();
 
