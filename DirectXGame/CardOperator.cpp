@@ -55,7 +55,7 @@ void CardOperator::TakeUpdate() {
 				isTake_[i] = true;
 			}	
 		}
-		if (joyState.Gamepad.wButtons == XINPUT_GAMEPAD_X) {
+		if (joyState.Gamepad.wButtons == XINPUT_GAMEPAD_B) {
 			for (int i = 0; i < 5; i++) {
 				/// ランダムで山札から取る
 				isTake_[i] = false;

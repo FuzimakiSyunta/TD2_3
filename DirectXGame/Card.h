@@ -28,8 +28,6 @@ public:
 private:
 	/// 山札用のランダム変数
 	int decknumber_ = 1;
-	/*/// カードを使う
-	int useCard_;*/
 	/// カードを捨てる
 	int dispose_;
 	/// カードを取る
