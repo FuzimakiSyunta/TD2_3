@@ -116,7 +116,6 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ObjectBreak.cpp" />
     <ClCompile Include="scene\GameScene.cpp" />
-    <ClCompile Include="WorldTransformEx.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2d\ImGuiManager.h" />
@@ -155,7 +154,6 @@
     <ClInclude Include="ObjectBreak.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="scene\GameScene.h" />
-    <ClInclude Include="WorldTransformEx.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Resources\shaders\TerrainPS.hlsl">

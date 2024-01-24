@@ -38,7 +38,10 @@ void GameScene::Initialize() {
 	
 
 	//3Dモデルのロード
-	modelObject_.reset(Model::CreateFromOBJ("syanderia.png", true));
+	modelObject_.reset(Model::CreateFromOBJ("syanderia", true));
+	objectBreak_ = std::make_unique<ObjectBreak>();
+	objectBreak_->Initialize(modelObject_.get());
+
 
 }
 
@@ -54,6 +57,8 @@ void GameScene::Update()
 	sprite_->SetSize(size);
 
 	gauge_->Update();
+
+	objectBreak_->Update();
 }
 
 void GameScene::Draw() { 
@@ -82,6 +87,9 @@ void GameScene::Draw() {
 	/// <summary>
 	/// ここに3Dオブジェクトの描画処理を追加できる
 	/// </summary>
+	
+	//オブジェクト	
+	objectBreak_->Draw(viewProjection_);
 
 	// 3Dオブジェクト描画後処理
 	Model::PostDraw();

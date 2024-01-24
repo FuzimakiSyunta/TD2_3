@@ -14,7 +14,7 @@
 class ObjectBreak
 {
 public:
-	void Initialize(const std::vector<Model*>& models); // 初期化
+	void Initialize(Model* model); // 初期化
 	void Update();     // 更新
 	void Draw(const ViewProjection& viewProjection);    // 描画
 
@@ -36,4 +36,7 @@ private:
 
 	//カメラビュープロジェクション
 	const ViewProjection* viewProjection_ = nullptr;
+
+	// 3Dモデル
+	Model* model_ = nullptr;
 };

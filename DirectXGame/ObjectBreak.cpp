@@ -1,12 +1,15 @@
 ﻿#include "ObjectBreak.h"
 
-void ObjectBreak::Initialize(const std::vector<Model*>& models) 
+void ObjectBreak::Initialize(Model* model) 
 {
 	//
 	input_ = Input::GetInstance();
 
 	//ワールドトランスフォーム
 	worldTransform_.Initialize();
+
+	assert(model);
+	model_ = model;
 }
 
 void ObjectBreak::Update() 
@@ -14,8 +17,9 @@ void ObjectBreak::Update()
 	worldTransform_.TransferMatrix();
 }
 
-void ObjectBreak::Draw(const ViewProjection& viewProjection) {
-	
+void ObjectBreak::Draw(const ViewProjection& viewProjection)
+{
+	model_->Draw(worldTransform_, viewProjection);
 }
 
 Vector3 ObjectBreak::GetPosition() 
