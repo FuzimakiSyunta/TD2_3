@@ -8,12 +8,25 @@
 #include "Sprite.h"
 #include "ViewProjection.h"
 #include "WorldTransform.h"
+
 #include <cassert>
+#include <math.h>
+#include <optional>
+
+#define _USE_MATH_DEFINES
 
 
 class ObjectBreak
 {
 public:
+
+	enum class Behavior
+	{
+		kStandby,	//待機
+		kAttack,	//攻撃
+		kRespawn,	//リスポーン
+	};
+
 	void Initialize(Model* model); // 初期化
 	void Update();     // 更新
 	void Draw(const ViewProjection& viewProjection);    // 描画
@@ -24,7 +37,30 @@ public:
 	Vector3 GetPosition();
 	const WorldTransform& GetWorldTransform();
 
+	//オブジェクト１
+
+	//待機
+	void BehaviorStanbyInitialize();	//初期化
+	void BehaviorStanbyUpdate();		//更新
+
+	//攻撃
+	void BehaviorAttackInitialize();	//初期化
+	void BehaviorAttackUpdate();		//更新
+
+	//リスポーン
+	void BehaviorRespawnInitialize();	//初期化
+	void BehaviorRespawnUpdate();		//更新
+
+	//行動
+	Behavior behavior_ = Behavior::kStandby;
+
 private:
+	//次の行動
+	std::optional<Behavior> behaviorRepuest_ = std::nullopt;
+
+	//カードを受け付けるフラグ
+	float cardReception = 1;
+
 	// キー
 	Input* input_ = nullptr;
 
