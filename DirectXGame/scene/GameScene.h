@@ -8,6 +8,8 @@
 #include "ViewProjection.h"
 #include "WorldTransform.h"
 #include "Card.h"
+#include "CardOperator.h"
+#include "Gauge.h"
 
 /// <summary>
 /// ゲームシーン
@@ -54,6 +56,27 @@ private: // メンバ変数
 	/// <summary>
 	/// ゲームシーン用
 	/// </summary>
+	
+	//テクスチャハンドル
+	uint32_t textureHandle_ = 0;
+
+	//スプライト
+	Sprite* sprite_ = nullptr;
+
+	//ワールドトランスフォーム　
+	WorldTransform worldTransform_;
+
+	//ビュープロジェクション
+	ViewProjection viewProjection_;
+
+	//ゲージ
+	std::unique_ptr<Gauge> gauge_;
+
+	//表示の大きさ
+	Vector2 size;
 	/// 山札
 	std::unique_ptr<Card> card_;
+
+	/// 
+	std::unique_ptr<CardOperator> cardOperator_;
 };
