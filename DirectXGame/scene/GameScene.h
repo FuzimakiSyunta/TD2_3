@@ -40,10 +40,16 @@ public: // メンバ関数
 	/// </summary>
 	void Draw();
 
+	bool IsSceneEnd() { return isSceneEnd_; }
+
+	/*Scene NextScene() { return Scene::CLEAR; }*/
+
 private: // メンバ変数
 	DirectXCommon* dxCommon_ = nullptr;
 	Input* input_ = nullptr;
 	Audio* audio_ = nullptr;
+
+	bool isSceneEnd_ = false;
 
 	/// <summary>
 	/// ゲームシーン用
