@@ -73,4 +73,6 @@ private: // メンバ変数
 
 	/// 
 	std::unique_ptr<CardOperator> cardOperator_;
+
+	
 };

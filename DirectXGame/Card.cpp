@@ -38,21 +38,21 @@ void Card::DeckUpdate() {
 		isHealcard_ = false;
 		isBufcard_ = true;
 	}
-	/// IMGUI
-	ImGui::Begin("Decknumber");
-	ImGui::Text("%d\n", decknumber_);
-	/*ImGui::Text("%d\n", isATCcard_);
-	ImGui::Text("%d\n", isDEFcard_);
-	ImGui::Text("%d\n", isHealcard_);
-	ImGui::Text("%d\n", isBufcard_);*/
-	ImGui::End();
-
-	
+	///// IMGUI
+	//ImGui::Begin("Decknumber");
+	//ImGui::Text("%d\n", decknumber_);
+	///*ImGui::Text("%d\n", isATCcard_);
+	//ImGui::Text("%d\n", isDEFcard_);
+	//ImGui::Text("%d\n", isHealcard_);
+	//ImGui::Text("%d\n", isBufcard_);*/
+	//ImGui::End();
 }
 
 void Card::HandCardUpdate() {
 
 }
 
-void Card::Draw() {}
+void Card::Draw() {
+	
+}
 

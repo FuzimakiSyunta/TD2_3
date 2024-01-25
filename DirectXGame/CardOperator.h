@@ -1,14 +1,16 @@
-﻿#pragma once
+﻿#pragma  once
 #include <Card.h>
 #include <time.h>
 #include <optional>
+#include <list>
+
 
 class CardOperator {
 public:
 	/// <summary>
 	/// 初期化
 	/// </summary>
-	void Initialize();
+	void Initialize(uint32_t textureHndle);
 
 	/// <summary>
 	/// 更新
@@ -41,6 +43,11 @@ public:
 	void TrashUpdate();
 
 	/// <summary>
+	/// カード描画
+	/// </summary>
+	void Draw();
+
+	/// <summary>
 	/// フェーズ
 	/// </summary>
 	enum class Riquest {
@@ -56,6 +63,21 @@ private:
 	Card* card_[5] = {nullptr,nullptr,nullptr,nullptr,nullptr};
 	/// 手札に加える
 	bool isTake_[5];
+	///カードの有無
+	bool isCardtrash_[5];
 	
+	///出たカード
+	int OpenCard_=0;
+	
+	// 手札
+	std::list<Card*> hands_;
+	// デッキ
+	std::list<Card*> deck_;
+
+	/// カードテクスチャ
+	uint32_t cardTexture_[4] = {0u, 0u, 0u, 0u};
+
+	// スプライト
+	Sprite* cardSprite_ = nullptr;
 
 };

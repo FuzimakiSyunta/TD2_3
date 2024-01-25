@@ -22,7 +22,8 @@ void GameScene::Initialize() {
 
 	/// 
 	cardOperator_ = std::make_unique<CardOperator>();
-	/// 
+	
+
 	cardOperator_->Initialize();
 
 	//ゲージのスプライト読み込み
