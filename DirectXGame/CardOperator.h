@@ -10,7 +10,7 @@ public:
 	/// <summary>
 	/// 初期化
 	/// </summary>
-	void Initialize(uint32_t textureHndle);
+	void Initialize();
 
 	/// <summary>
 	/// 更新
@@ -73,11 +73,6 @@ private:
 	std::list<Card*> hands_;
 	// デッキ
 	std::list<Card*> deck_;
-
-	/// カードテクスチャ
-	uint32_t cardTexture_[4] = {0u, 0u, 0u, 0u};
-
-	// スプライト
-	Sprite* cardSprite_ = nullptr;
+	
 
 };

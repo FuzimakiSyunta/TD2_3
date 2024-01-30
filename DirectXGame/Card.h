@@ -48,7 +48,5 @@ private:
 private:
 	DirectXCommon* dxCommon_ = nullptr;
 
-	/// カードスプライト
-	Sprite* cardSprite_ = nullptr;
-
+	
 };

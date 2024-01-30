@@ -3,14 +3,11 @@
 
 void Card::Initialize()
 {
-	/// カードの有無の初期化
-	for (int i = 0; i < 20; i++) {
-		deckFrag_[i] = true;
-	}
+	
 }
 
 void Card::DeckUpdate() {
-	///攻撃カード
+	/*///攻撃カード
 	if (decknumber_ > 0&&decknumber_ <= 10) {
 		isATCcard_ = true;
 		isDEFcard_ = false;
@@ -37,7 +34,7 @@ void Card::DeckUpdate() {
 		isDEFcard_ = false;
 		isHealcard_ = false;
 		isBufcard_ = true;
-	}
+	}*/
 	///// IMGUI
 	//ImGui::Begin("Decknumber");
 	//ImGui::Text("%d\n", decknumber_);

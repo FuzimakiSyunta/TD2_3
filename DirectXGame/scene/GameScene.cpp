@@ -17,6 +17,9 @@ void GameScene::Initialize() {
 	audio_ = Audio::GetInstance();
 	/// 山札の生成
 	card_ = std::make_unique<Card>();
+	/// カードのテクスチャ読み込み
+	cardTexture_ = TextureManager::Load("HEALcardBase.png");
+	cardSprite_ = Sprite::Create(cardTexture_, {0, 0});
 	///山札
 	card_->Initialize();
 
@@ -32,6 +35,7 @@ void GameScene::Initialize() {
 	sprite_ = Sprite::Create(textureHandle_, {100, 50});
 	gauge_ = std::make_unique<Gauge>();
 	gauge_->Initialize();
+	
 	
 }
 
@@ -96,9 +100,8 @@ void GameScene::Draw() {
 	/// <summary>
 	/// ここに前景スプライトの描画処理を追加できる
 	/// </summary>
-
 	sprite_->Draw();
-
+	cardSprite_->Draw();
 	// スプライト描画後処理
 	Sprite::PostDraw();
 

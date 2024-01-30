@@ -2,17 +2,14 @@
 #include "ImGuiManager.h"
 #include <TextureManager.h>
 
-void CardOperator::Initialize(uint32_t textureHndle) { 
+void CardOperator::Initialize() { 
 	/// 乱数の初期化(シード値の設定)
 	srand((unsigned int)time(nullptr));
-	for (int i = 0; i < 4; i++) {
-		cardTexture_[i] = textureHndle;
-	}
-	/// カードのテクスチャ読み込み
-	cardTexture_[0] = TextureManager::Load("HEALcardBase.png");
-	cardTexture_[1] = TextureManager::Load("ATKcardBase.png");
+
+	
+	/*cardTexture_[1] = TextureManager::Load("ATKcardBase.png");
 	cardTexture_[2] = TextureManager::Load("BUFFcardBase.png");
-	cardTexture_[3] = TextureManager::Load("DEFcardBase.png");
+	cardTexture_[3] = TextureManager::Load("DEFcardBase.png");*/
 	
 	/// カードの生成と初期化
 	for (int i = 0; i < 5; i++) {
@@ -80,7 +77,7 @@ void CardOperator::TrashUpdate() {
 }
 
 void CardOperator::Draw() { 
-	cardSprite_->Draw();
+	
 }
 
 void CardOperator::Update()
