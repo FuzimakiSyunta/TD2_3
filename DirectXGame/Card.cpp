@@ -3,7 +3,9 @@
 
 void Card::Initialize()
 {
-	
+	/// カードのテクスチャ読み込み
+	cardTexture_ = TextureManager::Load("HEALcardBase.png");
+	cardSprite_ = Sprite::Create(cardTexture_, {0, 0});
 }
 
 void Card::DeckUpdate() {
@@ -49,7 +51,7 @@ void Card::HandCardUpdate() {
 
 }
 
-void Card::Draw() {
-	
+void Card::Draw() { 
+	cardSprite_->Draw();
 }
 

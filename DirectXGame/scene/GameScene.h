@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Audio.h"
 #include "DirectXCommon.h"
 #include "Input.h"
@@ -72,9 +71,6 @@ private: // メンバ変数
 	std::unique_ptr<Card> card_;
 	/// 
 	std::unique_ptr<CardOperator> cardOperator_;
-	/// カードテクスチャ
-	uint32_t cardTexture_ = 0;
-	// スプライト
-	Sprite* cardSprite_ = nullptr;
+	
 	
 };
