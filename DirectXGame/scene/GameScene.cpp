@@ -17,20 +17,33 @@ void GameScene::Initialize() {
 	audio_ = Audio::GetInstance();
 	/// 山札の生成
 	card_ = std::make_unique<Card>();
-	///山札
+	/// 山札
 	card_->Initialize();
 
-	/// 
+	///
 	cardOperator_ = std::make_unique<CardOperator>();
-	/// 
+	///
 	cardOperator_->Initialize();
 
-	//ゲージのスプライト読み込み
-	textureHandle_ = TextureManager::Load("Stamina.png");
+	// スプライト読み込み
+	textureHandle_ = TextureManager::Load("gauge/Stamina.png");
+	HPgaugeTexture_ = TextureManager::Load("gauge/HPGauge.png");
 
+	// 警戒値ゲージの描画設定
 	sprite_ = Sprite::Create(textureHandle_, {100, 50});
 	gauge_ = std::make_unique<Gauge>();
 	gauge_->Initialize();
+	// HPゲージの描画設定
+	HPsprite_ = Sprite::Create(HPgaugeTexture_, {300, 300});
+	HPgauge_ = std::make_unique<Gauge>();
+	HPgauge_->Initialize();
+
+	//敵の生成
+	enemy_ = new Enemy();
+	//敵の3Dモデルの生成
+	modelEnemy_ = Model::Create();
+	//敵3Dモデルの作成
+	modelEnemy_ = Model::CreateFromOBJ("enemy", true);
 	
 }
 
@@ -47,14 +60,17 @@ void GameScene::Update()
 	cardOperator_->TakeUpdate();
 
 
-
+	//警戒値ゲージのサイズ変更
 	size = sprite_->GetSize();
-
 	size.x = gauge_->GetGauge();
-
 	sprite_->SetSize(size);
-
 	gauge_->Update();
+
+	//HPバーのサイズ変更
+	HPsize = HPsprite_->GetSize();
+	HPsize.x = HPgauge_->GetHPgauge();
+	HPsprite_->SetSize(HPsize);
+	HPgauge_->Update();
 }
 
 void GameScene::Draw() { 
@@ -97,6 +113,7 @@ void GameScene::Draw() {
 	/// </summary>
 
 	sprite_->Draw();
+	HPsprite_->Draw();
 
 	// スプライト描画後処理
 	Sprite::PostDraw();

@@ -109,6 +109,7 @@
     <ClCompile Include="2d\ImGuiManager.cpp" />
     <ClCompile Include="ATK.cpp" />
     <ClCompile Include="CardOperator.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Gauge.cpp" />
     <ClCompile Include="base\DirectXCommon.cpp" />
     <ClCompile Include="base\WinApp.cpp" />
@@ -137,6 +138,7 @@
     <ClInclude Include="3d\WorldTransform.h" />
     <ClInclude Include="ATK.h" />
     <ClInclude Include="CardOperator.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="Gauge.h" />
     <ClInclude Include="audio\Audio.h" />
     <ClInclude Include="base\DirectXCommon.h" />

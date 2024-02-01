@@ -23,7 +23,15 @@ public:
 	
 	float GetGauge() { return gauge; };
 
+	float GetHPgauge() { return HPgauge; };
+
 private:
+	//キー入力待機用の変数
+	int keyCoolTime_;
+
+	//HPゲージの変数
+	int HPgauge_;
+
 	//キー
 	Input* input_ = nullptr;
 
@@ -32,4 +40,6 @@ private:
 
 	// 警戒値のゲージ
 	float gauge;
+	//HPゲージ
+	float HPgauge;
 };

@@ -10,6 +10,7 @@
 #include "Card.h"
 #include "CardOperator.h"
 #include "Gauge.h"
+#include "Enemy.h"
 
 /// <summary>
 /// ゲームシーン
@@ -53,24 +54,37 @@ private: // メンバ変数
 	
 	//テクスチャハンドル
 	uint32_t textureHandle_ = 0;
+	uint32_t HPgaugeTexture_ = 0;
 
 	//スプライト
 	Sprite* sprite_ = nullptr;
+	//HPスプライト
+	Sprite* HPsprite_ = nullptr;
+	//クリア画面のスプライト
+	Sprite* clearSprite_ = nullptr;
 
 	//ワールドトランスフォーム　
 	WorldTransform worldTransform_;
-
 	//ビュープロジェクション
 	ViewProjection viewProjection_;
 
 	//ゲージ
 	std::unique_ptr<Gauge> gauge_;
+	//HPゲージ
+	std::unique_ptr<Gauge> HPgauge_;
 
 	//表示の大きさ
 	Vector2 size;
+	//HPゲージの表示の大きさ
+	Vector2 HPsize;
 	/// 山札
 	std::unique_ptr<Card> card_;
 
 	/// 
 	std::unique_ptr<CardOperator> cardOperator_;
+
+	//敵3Dモデル
+	Enemy* modelEnemy_ = nullptr;
+	//敵
+	Enemy* enemy_ = nullptr;
 };
