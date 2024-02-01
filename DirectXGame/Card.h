@@ -48,8 +48,8 @@ private:
 private:
 	DirectXCommon* dxCommon_ = nullptr;
 	/// カードテクスチャ
-	uint32_t cardTexture_ = 0;
+	uint32_t cardTexture_[4] = {0,0,0,0};
 	// スプライト
-	Sprite* cardSprite_ = nullptr;
+	Sprite* cardSprite_[4] = {nullptr, nullptr, nullptr, nullptr};
 	
 };

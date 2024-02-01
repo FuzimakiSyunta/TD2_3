@@ -4,8 +4,14 @@
 void Card::Initialize()
 {
 	/// カードのテクスチャ読み込み
-	cardTexture_ = TextureManager::Load("HEALcardBase.png");
-	cardSprite_ = Sprite::Create(cardTexture_, {0, 0});
+	cardTexture_[0] = TextureManager::Load("HEALcardBase.png");
+	cardTexture_[1] = TextureManager::Load("ATKcardBase.png");
+	cardTexture_[2] = TextureManager::Load("BUFFcardBase.png");
+	cardTexture_[3] = TextureManager::Load("DEFcardBase.png");
+	cardSprite_[0] = Sprite::Create(cardTexture_[0], {120, 180});
+	cardSprite_[1] = Sprite::Create(cardTexture_[1], {260, 180});
+	cardSprite_[2] = Sprite::Create(cardTexture_[2], {400, 180});
+	cardSprite_[3] = Sprite::Create(cardTexture_[3], {540, 180});
 }
 
 void Card::DeckUpdate() {
@@ -52,6 +58,8 @@ void Card::HandCardUpdate() {
 }
 
 void Card::Draw() { 
-	cardSprite_->Draw();
+	for (int i = 0; i < 4; i++) {
+		cardSprite_[i]->Draw();
+	}
 }
 

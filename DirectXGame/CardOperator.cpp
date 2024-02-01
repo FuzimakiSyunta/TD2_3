@@ -7,9 +7,7 @@ void CardOperator::Initialize() {
 	srand((unsigned int)time(nullptr));
 
 	
-	/*cardTexture_[1] = TextureManager::Load("ATKcardBase.png");
-	cardTexture_[2] = TextureManager::Load("BUFFcardBase.png");
-	cardTexture_[3] = TextureManager::Load("DEFcardBase.png");*/
+	
 	
 	/// カードの生成と初期化
 	for (int i = 0; i < 5; i++) {
