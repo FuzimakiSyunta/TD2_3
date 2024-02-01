@@ -5,9 +5,6 @@
 void CardOperator::Initialize() { 
 	/// 乱数の初期化(シード値の設定)
 	srand((unsigned int)time(nullptr));
-
-	
-	
 	
 	/// カードの生成と初期化
 	for (int i = 0; i < 5; i++) {
@@ -18,10 +15,8 @@ void CardOperator::Initialize() {
 	for (int i = 0; i < 5; i++) {
 		isCardtrash_[i] = false;
 	}
-	deck_.push_back(new Card());
-
 	TakeInitialize();
-
+	
 	// 範囲for
 	// Card* card 代入先
 	// deck_ 代入するやつ
@@ -29,9 +24,10 @@ void CardOperator::Initialize() {
 	for (Card* card : deck_) {
 		card->Initialize();
 	}
-	// どろー、deck_から手札にcard移動する
-	hands_.splice(hands_.end(), std::move(deck_), deck_.begin());
-	
+	//山札の総数
+	for (int i = 0; i < 20; i++) {
+		deck_.push_back(new Card());
+	}
 }
 
 void CardOperator::TakeInitialize() { 
@@ -54,20 +50,15 @@ void CardOperator::TakeUpdate() {
 	/// カードのランダム処理
 	if (Input::GetInstance()->GetJoystickState(0, joyState)) {
 		if (joyState.Gamepad.wButtons == XINPUT_GAMEPAD_A) {
-			
+			// どろー、deck_から手札にcard移動する
+			hands_.splice(hands_.end(), std::move(deck_), deck_.begin());
+			Sleep(1 * 1000);
 		}
 	}
-
 	for (int i = 0; i < 5; i++) {
 		card_[i]->DeckUpdate();
 	}
-
-//#ifdef _DEBUG
-//	ImGui::Begin("Card");
-//	ImGui::Text("%d", card_);
-//	ImGui::End();
-//
-//#endif // !_DEBUG
+	
 }
 
 void CardOperator::TrashUpdate() {
@@ -80,22 +71,7 @@ void CardOperator::Draw() {
 
 void CardOperator::Update()
 { 
-	/*switch (riquest_) {
-	case Riquest::kTake:
-	default:
-		/// 手札からランダムで取る
-		TakeUpdate();
-		break;
-	case Riquest::kTrash:
-		/// カードを捨てる
-		TrashUpdate();
-		break;
-	} */
-  
-	/*/// IMGUI
-	ImGui::Begin("Faze");
-	ImGui::Text("%d\n", riquest_);
-	ImGui::End();*/
+	
 }
 
 

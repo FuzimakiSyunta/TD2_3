@@ -15,7 +15,7 @@ void Card::Initialize()
 }
 
 void Card::DeckUpdate() {
-	/*///攻撃カード
+	///攻撃カード
 	if (decknumber_ > 0&&decknumber_ <= 10) {
 		isATCcard_ = true;
 		isDEFcard_ = false;
@@ -42,7 +42,7 @@ void Card::DeckUpdate() {
 		isDEFcard_ = false;
 		isHealcard_ = false;
 		isBufcard_ = true;
-	}*/
+	}
 	///// IMGUI
 	//ImGui::Begin("Decknumber");
 	//ImGui::Text("%d\n", decknumber_);
@@ -58,8 +58,17 @@ void Card::HandCardUpdate() {
 }
 
 void Card::Draw() { 
-	for (int i = 0; i < 4; i++) {
-		cardSprite_[i]->Draw();
+	if (isHealcard_==true) {
+		cardSprite_[0]->Draw();
+	}
+	if (isATCcard_==true) {
+		cardSprite_[1]->Draw();
+	}
+	if (isBufcard_==true) {
+		cardSprite_[2]->Draw();
+	}
+	if (isDEFcard_==true) {
+		cardSprite_[3]->Draw();
 	}
 }
 

@@ -65,7 +65,6 @@ private:
 	bool isTake_[5];
 	///カードの有無
 	bool isCardtrash_[5];
-	
 	///出たカード
 	int OpenCard_=0;
 	
