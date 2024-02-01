@@ -115,7 +115,9 @@
     <ClCompile Include="Keisan.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ObjectBreak.cpp" />
+    <ClCompile Include="Scene.cpp" />
     <ClCompile Include="scene\GameScene.cpp" />
+    <ClCompile Include="TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2d\ImGuiManager.h" />
@@ -153,7 +155,9 @@
     <ClInclude Include="math\Vector4.h" />
     <ClInclude Include="ObjectBreak.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="Scene.h" />
     <ClInclude Include="scene\GameScene.h" />
+    <ClInclude Include="TitleScene.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Resources\shaders\TerrainPS.hlsl">

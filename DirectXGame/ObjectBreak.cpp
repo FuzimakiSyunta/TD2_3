@@ -18,15 +18,16 @@ void ObjectBreak::Update()
 
 	//オブジェクトのゲームシーン
 
-	//std::nullopt以外の値が入っている時trueになる
-	behavior_ = behaviorRepuest_.value();
-
 	//待機シーン更新
 	BehaviorStanbyUpdate();
 
 	//trueなら初期化
 	if (behaviorRepuest_)
 	{
+		// std::nullopt以外の値が入っている時trueになる
+		behavior_ = behaviorRepuest_.value(); 
+
+
 		switch (behavior_) 
 		{
 		case ObjectBreak::Behavior::kStandby:
