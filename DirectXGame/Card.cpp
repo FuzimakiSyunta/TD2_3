@@ -16,28 +16,28 @@ void Card::Initialize()
 
 void Card::DeckUpdate() {
 	///攻撃カード
-	if (decknumber_ > 0&&decknumber_ <= 10) {
+	if (cardnumber_ > 0&&cardnumber_ <= 10) {
 		isATCcard_ = true;
 		isDEFcard_ = false;
 		isHealcard_ = false;
 		isBufcard_ = false;
 	}
 	///防御カード
-	if (decknumber_ >= 11 && decknumber_ <= 15) {
+	if (cardnumber_ >= 11 && cardnumber_ <= 15) {
 		isATCcard_ = false;
 		isDEFcard_ = true;
 		isHealcard_ = false;
 		isBufcard_ = false;
 	}
 	/// 回復カード
-	if (decknumber_ >= 16 && decknumber_ <= 18) {
+	if (cardnumber_ >= 16 && cardnumber_ <= 18) {
 		isATCcard_ = false;
 		isDEFcard_ = false;
 		isHealcard_ = true;
 		isBufcard_ = false;
 	}
 	/// バフカード
-	if (decknumber_ >= 19 && decknumber_ <= 20) {
+	if (cardnumber_ >= 19 && cardnumber_ <= 20) {
 		isATCcard_ = false;
 		isDEFcard_ = false;
 		isHealcard_ = false;

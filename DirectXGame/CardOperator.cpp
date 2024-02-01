@@ -7,10 +7,8 @@ void CardOperator::Initialize() {
 	srand((unsigned int)time(nullptr));
 	
 	/// カードの生成と初期化
-	for (int i = 0; i < 5; i++) {
-		card_[i] = new Card();
-		card_[i]->Initialize();
-	}
+	card_ = new Card();
+	card_->Initialize();
 	/// カードの有無
 	for (int i = 0; i < 5; i++) {
 		isCardtrash_[i] = false;
@@ -55,9 +53,7 @@ void CardOperator::TakeUpdate() {
 			Sleep(1 * 1000);
 		}
 	}
-	for (int i = 0; i < 5; i++) {
-		card_[i]->DeckUpdate();
-	}
+	card_->DeckUpdate();
 	
 }
 

@@ -60,7 +60,7 @@ private:
 	Riquest riquest_ = Riquest::kTake;
 	std::optional<Riquest> fazeRequest_ = std::nullopt;
 	/// カードの生成
-	Card* card_[5] = {nullptr,nullptr,nullptr,nullptr,nullptr};
+	Card* card_ = nullptr;
 	/// 手札に加える
 	bool isTake_[5];
 	///カードの有無

@@ -25,11 +25,11 @@ public:
 	/// </summary>
 	void Draw();
 
-	void SetCardNumber(int decknumber) {decknumber_ = decknumber; }
+	void SetCardNumber(int decknumber) {cardnumber_ = decknumber; }
 
 private:
 	/// 山札用のランダム変数
-	int decknumber_ = 1;
+	int cardnumber_ = 1;
 	/// カードを捨てる
 	int dispose_;
 	/// カードを取る
