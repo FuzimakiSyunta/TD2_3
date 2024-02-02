@@ -27,10 +27,6 @@ public:
 
 	void SetCardNumber(int decknumber) {cardnumber_ = decknumber; }
 
-	enum CradType {
-		
-	};
-
 private:
 	/// 山札用のランダム変数
 	int cardnumber_ = 1;
