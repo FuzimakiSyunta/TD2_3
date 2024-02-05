@@ -32,5 +32,16 @@ void Card::HandCardUpdate() {
 
 void Card::Draw() { 
 	
+	cardSprite_[0]->Draw();
+	
+	
+	cardSprite_[1]->Draw();
+	
+	
+	cardSprite_[2]->Draw();
+	
+	
+	cardSprite_[3]->Draw();
+	
 }
 
