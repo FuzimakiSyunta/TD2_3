@@ -108,11 +108,11 @@
   <ItemGroup>
     <ClCompile Include="2d\ImGuiManager.cpp" />
     <ClCompile Include="ATK.cpp" />
+    <ClCompile Include="Card.cpp" />
     <ClCompile Include="CardOperator.cpp" />
     <ClCompile Include="Gauge.cpp" />
     <ClCompile Include="base\DirectXCommon.cpp" />
     <ClCompile Include="base\WinApp.cpp" />
-    <ClCompile Include="Card.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="scene\GameScene.cpp" />
   </ItemGroup>
@@ -136,6 +136,7 @@
     <ClInclude Include="3d\ViewProjection.h" />
     <ClInclude Include="3d\WorldTransform.h" />
     <ClInclude Include="ATK.h" />
+    <ClInclude Include="Card.h" />
     <ClInclude Include="CardOperator.h" />
     <ClInclude Include="Gauge.h" />
     <ClInclude Include="audio\Audio.h" />
@@ -144,7 +145,6 @@
     <ClInclude Include="base\StringUtility.h" />
     <ClInclude Include="base\TextureManager.h" />
     <ClInclude Include="base\WinApp.h" />
-    <ClInclude Include="Card.h" />
     <ClInclude Include="input\Input.h" />
     <ClInclude Include="math\Matrix4x4.h" />
     <ClInclude Include="math\Vector2.h" />

@@ -13,21 +13,6 @@ public:
 	void Initialize();
 
 	/// <summary>
-	/// 更新
-	/// </summary>
-	void Update();
-
-	/// <summary>
-	/// フェーズ初期化
-	/// </summary>
-	void FazeInitialize();
-
-	/// <summary>
-	/// フェーズ更新
-	/// </summary>
-	void FazeUpdate();
-
-	/// <summary>
 	/// 手札動作更新
 	/// </summary>
 	void TakeUpdate();
@@ -56,6 +41,7 @@ public:
 		kTrash,
 	};
 
+
 private:
 	Riquest riquest_ = Riquest::kTake;
 	std::optional<Riquest> fazeRequest_ = std::nullopt;
@@ -67,7 +53,23 @@ private:
 	bool isCardtrash_[5];
 	///出たカード
 	int OpenCard_=0;
-	
+	/// 山札用のランダム変数
+	int cardnumber_ = 1;
+	/// 攻撃カード
+	bool isATCcard_ = false;
+	/// 防御カード
+	bool isDEFcard_ = false;
+	/// 回復カード
+	bool isHealcard_ = false;
+	/// バフカード
+	bool isBufcard_ = false;	
+
+
+	/// カードテクスチャ
+	uint32_t cardTexture_[4] = {0, 0, 0, 0};
+	// スプライト
+	Sprite* cardSprite_[4] = {nullptr, nullptr, nullptr, nullptr};
+
 	// 手札
 	std::list<Card*> hands_;
 	// デッキ

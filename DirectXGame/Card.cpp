@@ -15,34 +15,7 @@ void Card::Initialize()
 }
 
 void Card::DeckUpdate() {
-	///攻撃カード
-	if (cardnumber_ > 0&&cardnumber_ <= 10) {
-		isATCcard_ = true;
-		isDEFcard_ = false;
-		isHealcard_ = false;
-		isBufcard_ = false;
-	}
-	///防御カード
-	if (cardnumber_ >= 11 && cardnumber_ <= 15) {
-		isATCcard_ = false;
-		isDEFcard_ = true;
-		isHealcard_ = false;
-		isBufcard_ = false;
-	}
-	/// 回復カード
-	if (cardnumber_ >= 16 && cardnumber_ <= 18) {
-		isATCcard_ = false;
-		isDEFcard_ = false;
-		isHealcard_ = true;
-		isBufcard_ = false;
-	}
-	/// バフカード
-	if (cardnumber_ >= 19 && cardnumber_ <= 20) {
-		isATCcard_ = false;
-		isDEFcard_ = false;
-		isHealcard_ = false;
-		isBufcard_ = true;
-	}
+	
 	///// IMGUI
 	//ImGui::Begin("Decknumber");
 	//ImGui::Text("%d\n", decknumber_);
@@ -58,17 +31,6 @@ void Card::HandCardUpdate() {
 }
 
 void Card::Draw() { 
-	if (isHealcard_==true) {
-		cardSprite_[0]->Draw();
-	}
-	if (isATCcard_==true) {
-		cardSprite_[1]->Draw();
-	}
-	if (isBufcard_==true) {
-		cardSprite_[2]->Draw();
-	}
-	if (isDEFcard_==true) {
-		cardSprite_[3]->Draw();
-	}
+	
 }
 
