@@ -9,10 +9,6 @@ void CardOperator::Initialize() {
 	/// カードの生成と初期化
 	card_ = new Card();
 	card_->Initialize();
-	/// カードの有無
-	for (int i = 0; i < 5; i++) {
-		isCardtrash_[i] = false;
-	}
 	TakeInitialize();
 	
 	// 範囲for
@@ -39,71 +35,60 @@ void CardOperator::Initialize() {
 }
 
 void CardOperator::TakeInitialize() { 
-	for (int i = 0; i < 5; i++) {
-		isTake_[i] = false;
-	}
+	
 }
 
-void CardOperator::TakeUpdate() {
-	/// ゲームパッドの状態を得る変数
-	XINPUT_STATE joyState;
-	/// カードの処理
-	if (Input::GetInstance()->GetJoystickState(0, joyState)) {
-		if (joyState.Gamepad.wButtons == XINPUT_GAMEPAD_A) {
-			// どろー、deck_から手札にcard移動する
-			hands_.splice(hands_.end(), std::move(deck_), deck_.begin());
-			Sleep(1 * 1000);
-		}
+void CardOperator::FarstTakeUpdate() {
+	///最初に5まいとる
+	if (TakeCount_<5) {
+		StartTakeTime_++;
 	}
-	
-	/// 攻撃カード
-	if (cardnumber_ > 0 && cardnumber_ <= 10) {
-		isATCcard_ = true;
-		isDEFcard_ = false;
-		isHealcard_ = false;
-		isBufcard_ = false;
+
+	if (StartTakeTime_>=10) {
+		// どろー、deck_から手札にcard移動する
+		hands_.splice(hands_.end(), std::move(deck_), deck_.begin());
+		TakeCount_ += 1;
+		StartTakeTime_ = 0;
+		Sleep(1 * 100);
 	}
-	/// 防御カード
-	if (cardnumber_ >= 11 && cardnumber_ <= 15) {
-		isATCcard_ = false;
-		isDEFcard_ = true;
-		isHealcard_ = false;
-		isBufcard_ = false;
-	}
-	/// 回復カード
-	if (cardnumber_ >= 16 && cardnumber_ <= 18) {
-		isATCcard_ = false;
-		isDEFcard_ = false;
-		isHealcard_ = true;
-		isBufcard_ = false;
-	}
-	/// バフカード
-	if (cardnumber_ >= 19 && cardnumber_ <= 20) {
-		isATCcard_ = false;
-		isDEFcard_ = false;
-		isHealcard_ = false;
-		isBufcard_ = true;
-	}
-	
+
+#ifdef _DEBUG
+	// 画面の座標を表示
+	ImGui::Begin("Card");
+	ImGui::Text("%d\n", TakeCount_);
+	ImGui::End();
+#endif !_DEBUG
+
 }
 
 void CardOperator::TrashUpdate() {
-	
+	/// ゲームパッドの状態を得る変数
+	XINPUT_STATE joyState;
+	/// カードの捨てる処理
+	if (Input::GetInstance()->GetJoystickState(0, joyState)) {
+		if (joyState.Gamepad.wButtons == XINPUT_GAMEPAD_A) {
+			
+		}
+	}
 }
 
 void CardOperator::Draw() { 
-	if (isHealcard_ == true) {
+	if (TakeCount_ >= 1) {
 		cardSprite_[0]->Draw();
 	}
-	if (isATCcard_ == true) {
+	
+	if (TakeCount_ >= 2) {
 		cardSprite_[1]->Draw();
 	}
-	if (isBufcard_ == true) {
+	
+	if (TakeCount_ >= 3) {
 		cardSprite_[2]->Draw();
 	}
-	if (isDEFcard_ == true) {
+	
+	if (TakeCount_ >= 4) {
 		cardSprite_[3]->Draw();
 	}
+	
 }
 
 

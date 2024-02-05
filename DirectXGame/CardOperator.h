@@ -15,7 +15,7 @@ public:
 	/// <summary>
 	/// 手札動作更新
 	/// </summary>
-	void TakeUpdate();
+	void FarstTakeUpdate();
 
 	/// <summary>
 	/// 手札動作初期化
@@ -43,12 +43,8 @@ public:
 
 
 private:
-	Riquest riquest_ = Riquest::kTake;
-	std::optional<Riquest> fazeRequest_ = std::nullopt;
 	/// カードの生成
 	Card* card_ = nullptr;
-	/// 手札に加える
-	bool isTake_[5];
 	///カードの有無
 	bool isCardtrash_[5];
 	///出たカード
@@ -63,6 +59,11 @@ private:
 	bool isHealcard_ = false;
 	/// バフカード
 	bool isBufcard_ = false;	
+
+	///スタート時に5枚引く時間
+	int StartTakeTime_ = 0;
+	///引いたカウント
+	int TakeCount_ = 0;
 
 
 	/// カードテクスチャ

@@ -43,7 +43,7 @@ void GameScene::Update()
 	card_->DeckUpdate();
 
 	///
-	cardOperator_->TakeUpdate();
+	cardOperator_->FarstTakeUpdate();
 
 
 
