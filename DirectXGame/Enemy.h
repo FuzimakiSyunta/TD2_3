@@ -12,29 +12,35 @@ public:
 	/// <summary>
 	/// 初期化
 	/// </summary>
-	void Initialize(){};
+	void Initialize(Model* modelHead);
 
 	/// <summary>
 	/// 更新
 	/// </summary>
-	void Update(){};
+	void Update();
 
 	/// <summary>
 	/// 描画
 	/// </summary>
-	void Draw(){};
+	void Draw(ViewProjection& viewProjection);
 
 	/// <summary>
 	/// 行動の初期化
 	/// </summary>
-	void ActionInitialize(){};
+	/*void ActionInitialize();*/
 
 private:
 
 	// ワールド変換データ
 	WorldTransform worldTransform_;
+	//ビュープロジェクション
+	ViewProjection* viewProjection_ = nullptr;
 	// モデル
 	Model* model_ = nullptr;
 	// テクスチャハンドル
 	uint32_t enemy_ = 0u;
+
+	//敵頭部のデータ
+	WorldTransform worldTransformHead_;
+	Model* modelEnemyHead_;
 };

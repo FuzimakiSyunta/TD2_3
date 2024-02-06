@@ -115,7 +115,9 @@
     <ClCompile Include="base\WinApp.cpp" />
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MyMath.cpp" />
     <ClCompile Include="scene\GameScene.cpp" />
+    <ClCompile Include="WorldTransformEx.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2d\ImGuiManager.h" />
@@ -152,6 +154,7 @@
     <ClInclude Include="math\Vector2.h" />
     <ClInclude Include="math\Vector3.h" />
     <ClInclude Include="math\Vector4.h" />
+    <ClInclude Include="MyMath.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="scene\GameScene.h" />
   </ItemGroup>

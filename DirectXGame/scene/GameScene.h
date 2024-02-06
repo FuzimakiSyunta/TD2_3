@@ -83,8 +83,9 @@ private: // メンバ変数
 	/// 
 	std::unique_ptr<CardOperator> cardOperator_;
 
-	//敵3Dモデル
-	Enemy* modelEnemy_ = nullptr;
+
 	//敵
-	Enemy* enemy_ = nullptr;
+	std::unique_ptr<Enemy>enemy_ = nullptr;
+	//敵3Dモデル
+	std::unique_ptr<Model>modelEnemyHead_;
 };

@@ -15,6 +15,7 @@ void GameScene::Initialize() {
 	dxCommon_ = DirectXCommon::GetInstance();
 	input_ = Input::GetInstance();
 	audio_ = Audio::GetInstance();
+	viewProjection_.Initialize();
 	/// 山札の生成
 	card_ = std::make_unique<Card>();
 	/// 山札
@@ -34,21 +35,23 @@ void GameScene::Initialize() {
 	gauge_ = std::make_unique<Gauge>();
 	gauge_->Initialize();
 	// HPゲージの描画設定
-	HPsprite_ = Sprite::Create(HPgaugeTexture_, {300, 300});
+	HPsprite_ = Sprite::Create(HPgaugeTexture_, {300, 600});
 	HPgauge_ = std::make_unique<Gauge>();
 	HPgauge_->Initialize();
 
 	//敵の生成
-	enemy_ = new Enemy();
-	//敵の3Dモデルの生成
-	modelEnemy_ = Model::Create();
+	enemy_ = std::make_unique<Enemy>();
 	//敵3Dモデルの作成
-	modelEnemy_ = Model::CreateFromOBJ("enemy", true);
+	modelEnemyHead_.reset(Model::CreateFromOBJ("enemy", true));
+	//敵の初期化
+	enemy_->Initialize(modelEnemyHead_.get());
 	
 }
 
 void GameScene::Update() 
 {
+	//敵キャラの更新　
+	enemy_->Update();
 	//カード操作
 	cardOperator_->Update();
 	/// 山札
@@ -71,6 +74,8 @@ void GameScene::Update()
 	HPsize.x = HPgauge_->GetHPgauge();
 	HPsprite_->SetSize(HPsize);
 	HPgauge_->Update();
+
+	/*viewProjection_.TransferMatrix();*/
 }
 
 void GameScene::Draw() { 
@@ -99,6 +104,8 @@ void GameScene::Draw() {
 	/// <summary>
 	/// ここに3Dオブジェクトの描画処理を追加できる
 	/// </summary>
+
+	enemy_->Draw(viewProjection_);
 
 	// 3Dオブジェクト描画後処理
 	Model::PostDraw();
