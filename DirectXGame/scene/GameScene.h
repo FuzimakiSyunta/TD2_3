@@ -71,6 +71,7 @@ private: // メンバ変数
 	std::unique_ptr<Card> card_;
 	/// 
 	std::unique_ptr<CardOperator> cardOperator_;
-	
+
+	///ゲームスタート時間
 	
 };

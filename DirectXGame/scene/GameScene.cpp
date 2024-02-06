@@ -39,15 +39,11 @@ void GameScene::Initialize() {
 
 void GameScene::Update() 
 {
-	//カード操作
-	cardOperator_->Update();
 	/// 山札
 	card_->DeckUpdate();
 
 	///
-	cardOperator_->FazeUpdate();
-	///
-	cardOperator_->TakeUpdate();
+	cardOperator_->FarstTakeUpdate();
 
 
 
@@ -99,7 +95,7 @@ void GameScene::Draw() {
 	/// ここに前景スプライトの描画処理を追加できる
 	/// </summary>
 	sprite_->Draw();
-	card_->Draw();
+	cardOperator_->Draw();
 	
 	// スプライト描画後処理
 	Sprite::PostDraw();
