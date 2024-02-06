@@ -12,45 +12,19 @@ void Card::Initialize()
 	cardSprite_[1] = Sprite::Create(cardTexture_[1], {260, 180});
 	cardSprite_[2] = Sprite::Create(cardTexture_[2], {400, 180});
 	cardSprite_[3] = Sprite::Create(cardTexture_[3], {540, 180});
+
 }
 
 void Card::DeckUpdate() {
-	///攻撃カード
-	if (cardnumber_ > 0&&cardnumber_ <= 10) {
-		isATCcard_ = true;
-		isDEFcard_ = false;
-		isHealcard_ = false;
-		isBufcard_ = false;
-	}
-	///防御カード
-	if (cardnumber_ >= 11 && cardnumber_ <= 15) {
-		isATCcard_ = false;
-		isDEFcard_ = true;
-		isHealcard_ = false;
-		isBufcard_ = false;
-	}
-	/// 回復カード
-	if (cardnumber_ >= 16 && cardnumber_ <= 18) {
-		isATCcard_ = false;
-		isDEFcard_ = false;
-		isHealcard_ = true;
-		isBufcard_ = false;
-	}
-	/// バフカード
-	if (cardnumber_ >= 19 && cardnumber_ <= 20) {
-		isATCcard_ = false;
-		isDEFcard_ = false;
-		isHealcard_ = false;
-		isBufcard_ = true;
-	}
-	///// IMGUI
-	//ImGui::Begin("Decknumber");
-	//ImGui::Text("%d\n", decknumber_);
-	///*ImGui::Text("%d\n", isATCcard_);
-	//ImGui::Text("%d\n", isDEFcard_);
-	//ImGui::Text("%d\n", isHealcard_);
-	//ImGui::Text("%d\n", isBufcard_);*/
-	//ImGui::End();
+	
+	/*/// IMGUI
+	ImGui::Begin("Decknumber");
+	ImGui::Text("%d\n", decknumber_);
+	ImGui::Text("%d\n", isATCcard_);
+	ImGui::Text("%d\n", isDEFcard_);
+	ImGui::Text("%d\n", isHealcard_);
+	ImGui::Text("%d\n", isBufcard_);
+	ImGui::End();*/
 }
 
 void Card::HandCardUpdate() {
