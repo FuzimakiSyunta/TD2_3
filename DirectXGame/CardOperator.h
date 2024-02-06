@@ -3,6 +3,7 @@
 #include <time.h>
 #include <optional>
 #include <list>
+#include <random>
 
 
 class CardOperator {
@@ -23,6 +24,12 @@ public:
 	void TakeInitialize();
 
 	/// <summary>
+	/// 更新
+	/// </summary>
+	void Update();
+
+
+	/// <summary>
 	/// 捨てる動作
 	/// </summary>
 	void TrashUpdate();
@@ -32,25 +39,22 @@ public:
 	/// </summary>
 	void Draw();
 
+	void SetType(int cardType_);
+
 	/// <summary>
 	/// フェーズ
 	/// </summary>
-	enum class Riquest {
-		kTake,
-		kAttack,
-		kTrash,
+	enum class CardType {
+		kAtk,
+		kDef,
+		kBuff,
+		kHeal
 	};
 
 
 private:
 	/// カードの生成
 	Card* card_ = nullptr;
-	///カードの有無
-	bool isCardtrash_[5];
-	///出たカード
-	int OpenCard_=0;
-	/// 山札用のランダム変数
-	int cardnumber_ = 1;
 	/// 攻撃カード
 	bool isATCcard_ = false;
 	/// 防御カード
@@ -65,7 +69,6 @@ private:
 	///引いたカウント
 	int TakeCount_ = 0;
 
-
 	/// カードテクスチャ
 	uint32_t cardTexture_[4] = {0, 0, 0, 0};
 	// スプライト
@@ -75,6 +78,6 @@ private:
 	std::list<Card*> hands_;
 	// デッキ
 	std::list<Card*> deck_;
-	
 
+	CardType cardType_;
 };

@@ -39,13 +39,12 @@ void GameScene::Initialize() {
 
 void GameScene::Update() 
 {
-	/// 山札
-	card_->DeckUpdate();
-
-	///
+	///最初のカード動作
 	cardOperator_->FarstTakeUpdate();
-
-
+	///カード更新
+	cardOperator_->Update();
+	///カードを捨てる
+	cardOperator_->TrashUpdate();
 
 	size = sprite_->GetSize();
 

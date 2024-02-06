@@ -6,7 +6,6 @@
 #include "Sprite.h"
 #include "ViewProjection.h"
 #include "WorldTransform.h"
-#include "Card.h"
 #include "CardOperator.h"
 #include "Gauge.h"
 
