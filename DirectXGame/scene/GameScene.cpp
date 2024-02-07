@@ -16,11 +16,6 @@ void GameScene::Initialize() {
 	input_ = Input::GetInstance();
 	audio_ = Audio::GetInstance();
 	viewProjection_.Initialize();
-	/// 山札の生成
-	card_ = std::make_unique<Card>();
-	
-	///山札
-	card_->Initialize();
 
 	//ワールドトランスフォーム
 	worldTransform_.Initialize();
@@ -78,9 +73,6 @@ void GameScene::Update()
 	enemy_->Update();
 	//カード操作
 	cardOperator_->Update();
-
-	///
-	cardOperator_->FazeUpdate();
 	///
 	cardOperator_->TakeUpdate();
 
