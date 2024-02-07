@@ -111,7 +111,6 @@ private: // メンバ変数
 	/// 
 	std::unique_ptr<CardOperator> cardOperator_;
 
-
 	//敵
 	std::unique_ptr<Enemy>enemy_ = nullptr;
 	//敵3Dモデル

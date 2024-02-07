@@ -42,8 +42,6 @@ private:
 	std::list<Card*> hands_;
 	// デッキ
 	std::list<Card*> deck_;
-	// 墓地
-	std::list<Card*> cemetery_;
 
 	//引いた数
 	int TakeCount_;

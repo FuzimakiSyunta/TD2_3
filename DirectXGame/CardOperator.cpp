@@ -63,7 +63,6 @@ void CardOperator::TakeUpdate() {
 	hands_.splice(hands_.end(), std::move(deck_), deck_.begin());
 	DeckCount_ += 1;
 	TakeCount_ += 1;
-	Sleep(1 * 150);
 }
 
 void CardOperator::Update() {
@@ -88,10 +87,13 @@ void CardOperator::Update() {
 			}
 			if (Handslimit_ == true) {
 				if (joyState.Gamepad.wButtons == XINPUT_GAMEPAD_B) {
-					hands_.clear(); // カードを捨てる
-					isTrash_ = true;
+					// どろー、deck_から手札にcard移動する
+					deck_.splice(deck_.end(), std::move(hands_), hands_.begin());
+					TakeCount_ -= 1 ;
+					DeckCount_ -= 1;
+				}
+				if (TakeCount_ <= 0) {
 					Handslimit_ = false;
-					TakeCount_ = 0;
 				}
 			}
 		}
@@ -99,12 +101,13 @@ void CardOperator::Update() {
 		if (TakeCount_ == 5) {
 			Handslimit_ = true;
 		}
+		
 	}
 #ifdef _DEBUG
 	// 画面の座標を表示
 	ImGui::Begin("Card");
-	ImGui::Text("%d\n", DeckCount_);
-	ImGui::Text("%d\n", TakeCount_);
+	ImGui::Text("DeckCount %d\n", DeckCount_);
+	ImGui::Text("TakeCount %d\n", TakeCount_);
 	ImGui::End();
 #endif !_DEBUG
 
