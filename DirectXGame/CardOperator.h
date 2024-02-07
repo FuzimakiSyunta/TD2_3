@@ -3,6 +3,7 @@
 #include <time.h>
 #include <optional>
 #include <list>
+#include <random>
 
 
 class CardOperator {
@@ -18,60 +19,39 @@ public:
 	void Update();
 
 	/// <summary>
-	/// フェーズ初期化
-	/// </summary>
-	void FazeInitialize();
-
-	/// <summary>
-	/// フェーズ更新
-	/// </summary>
-	void FazeUpdate();
-
-	/// <summary>
-	/// 手札動作更新
+	/// 手札更新
 	/// </summary>
 	void TakeUpdate();
 
-	/// <summary>
-	/// 手札動作初期化
-	/// </summary>
-	void TakeInitialize();
-
-	/// <summary>
-	/// 捨てる動作
-	/// </summary>
-	void TrashUpdate();
 
 	/// <summary>
 	/// カード描画
 	/// </summary>
 	void Draw();
 
-	/// <summary>
-	/// フェーズ
-	/// </summary>
-	enum class Riquest {
-		kTake,
-		kAttack,
-		kTrash,
-	};
+	void SetType(int cardType_);
 
 private:
-	Riquest riquest_ = Riquest::kTake;
-	std::optional<Riquest> fazeRequest_ = std::nullopt;
 	/// カードの生成
-	Card* card_[5] = {nullptr,nullptr,nullptr,nullptr,nullptr};
-	/// 手札に加える
-	bool isTake_[5];
-	///カードの有無
-	bool isCardtrash_[5];
-	///出たカード
-	int OpenCard_=0;
-	
+	Card* card_ = nullptr;
+
+	/// カードテクスチャ
+	uint32_t cardTexture_[4] = {0, 0, 0, 0};
+	// スプライト
+	Sprite* cardSprite_[4] = {nullptr, nullptr, nullptr, nullptr};
+
 	// 手札
 	std::list<Card*> hands_;
 	// デッキ
 	std::list<Card*> deck_;
-	
 
+	//引いた数
+	int TakeCount_;
+	// 捨てた
+	bool isTrash_;
+	//5枚でストップ
+	bool Handslimit_;
+	//山札の枚数可視化
+	int DeckCount_;
+	CardType cardType_;
 };

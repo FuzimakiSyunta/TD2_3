@@ -144,6 +144,7 @@
     <ClInclude Include="3d\WorldTransform.h" />
     <ClInclude Include="ATK.h" />
     <ClInclude Include="ClearScene.h" />
+    <ClInclude Include="Card.h" />
     <ClInclude Include="CardOperator.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Gauge.h" />
@@ -153,7 +154,6 @@
     <ClInclude Include="base\StringUtility.h" />
     <ClInclude Include="base\TextureManager.h" />
     <ClInclude Include="base\WinApp.h" />
-    <ClInclude Include="Card.h" />
     <ClInclude Include="input\Input.h" />
     <ClInclude Include="Keisan.h" />
     <ClInclude Include="math\Matrix4x4.h" />

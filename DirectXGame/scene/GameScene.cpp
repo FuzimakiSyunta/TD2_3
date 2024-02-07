@@ -78,8 +78,6 @@ void GameScene::Update()
 	enemy_->Update();
 	//カード操作
 	cardOperator_->Update();
-	/// 山札
-	card_->DeckUpdate();
 
 	///
 	cardOperator_->FazeUpdate();
@@ -87,7 +85,7 @@ void GameScene::Update()
 	cardOperator_->TakeUpdate();
 
 
-	//警戒値ゲージのサイズ変更
+
 	size = sprite_->GetSize();
 	size.x = gauge_->GetGauge();
 	sprite_->SetSize(size);
@@ -168,6 +166,8 @@ void GameScene::Draw() {
 	sprite_->Draw();
 	HPsprite_->Draw();
 
+	cardOperator_->Draw();
+	
 	// スプライト描画後処理
 	Sprite::PostDraw();
 

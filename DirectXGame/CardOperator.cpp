@@ -1,78 +1,128 @@
 ﻿#include "CardOperator.h"
 #include "ImGuiManager.h"
 #include <TextureManager.h>
+#include <iostream>
 
 void CardOperator::Initialize() { 
 	/// 乱数の初期化(シード値の設定)
 	srand((unsigned int)time(nullptr));
-	
-	/// カードの生成と初期化
+	/// カードのテクスチャ読み込み
+	cardTexture_[0] = TextureManager::Load("ATKcardBase.png");
+	cardTexture_[1] = TextureManager::Load("DEFcardBase.png");
+	cardTexture_[2] = TextureManager::Load("BUFFcardBase.png");
+	cardTexture_[3] = TextureManager::Load("HEALcardBase.png");
+	///山札の総数20枚
+	//DEF
 	for (int i = 0; i < 5; i++) {
-		card_[i] = new Card();
-		card_[i]->Initialize();
+		// デッキに入れる前に初期化をしてカードタイプ決めてる
+		Card* card = new Card();
+		card->Initialize(CardType::kDef, cardTexture_[static_cast<size_t>(CardType::kDef)]);
+		deck_.push_back(card);
 	}
-	/// カードの有無
-	for (int i = 0; i < 5; i++) {
-		isCardtrash_[i] = false;
+	//ATK
+	for (int i = 0; i < 10; i++) {
+		// デッキに入れる前に初期化をしてカードタイプ決めてる
+		Card* card = new Card();
+		card->Initialize(CardType::kAtk, cardTexture_[static_cast<size_t>(CardType::kAtk)]);
+		deck_.push_back(card);
 	}
-	TakeInitialize();
-	
-	// 範囲for
-	// Card* card 代入先
-	// deck_ 代入するやつ
-	// 要はdeck_の要素分ループさせ、ループごとの要素をcardに代入している
+	//BUFF
+	for (int i = 0; i < 2; i++) {
+		// デッキに入れる前に初期化をしてカードタイプ決めてる
+		Card* card = new Card();
+		card->Initialize(CardType::kBuff, cardTexture_[static_cast<size_t>(CardType::kBuff)]);
+		deck_.push_back(card);
+	}
+	//HEAL
+	for (int i = 0; i < 3; i++) {
+		// デッキに入れる前に初期化をしてカードタイプ決めてる
+		Card* card = new Card();
+		card->Initialize(CardType::kHeal, cardTexture_[static_cast<size_t>(CardType::kHeal)]);
+		deck_.push_back(card);
+	}
+
+	//デッキのランダム
+	size_t length = deck_.size();
+	for (size_t i = length - 1; i > 0; --i) {
+		int j = rand() % (i + 1);
+		std::swap(*next(deck_.begin(), i), *next(deck_.begin(), j));
+	}
 	for (Card* card : deck_) {
-		card->Initialize();
+		std::cout << card << std::endl;
 	}
-	//山札の総数
-	for (int i = 0; i < 20; i++) {
-		deck_.push_back(new Card());
-	}
-}
-
-void CardOperator::TakeInitialize() { 
-	for (int i = 0; i < 5; i++) {
-		isTake_[i] = false;
-	}
-}
-
-void CardOperator::FazeInitialize() { 
-	
-}
-
-void CardOperator::FazeUpdate() { 
-	
+	//引いた数カウント
+	TakeCount_ = 0;
+	// 5枚でストップ
+	Handslimit_ = false;
+	// 捨てた
+	isTrash_ = false;
 }
 
 void CardOperator::TakeUpdate() {
+	// どろー、deck_から手札にcard移動する
+	hands_.splice(hands_.end(), std::move(deck_), deck_.begin());
+	DeckCount_ += 1;
+	TakeCount_ += 1;
+	Sleep(1 * 150);
+}
+
+void CardOperator::Update() {
 	/// ゲームパッドの状態を得る変数
 	XINPUT_STATE joyState;
-	/// カードのランダム処理
-	if (Input::GetInstance()->GetJoystickState(0, joyState)) {
-		if (joyState.Gamepad.wButtons == XINPUT_GAMEPAD_A) {
-			// どろー、deck_から手札にcard移動する
-			hands_.splice(hands_.end(), std::move(deck_), deck_.begin());
-			Sleep(1 * 1000);
+	if (DeckCount_ < 20) {//
+		///
+		if (Input::GetInstance()->GetJoystickState(0, joyState)) {
+			if (joyState.Gamepad.wButtons == XINPUT_GAMEPAD_X) {
+				if (Handslimit_ == false) {
+					TakeUpdate(); // カードを追加
+				}
+				int i = 0;
+				// 例　手札の描画用位置の設定
+				for (Card* card : hands_) {
+					Vector2 pos = {0, 0};
+					// 　変数で指定するか直性値入れるか
+					card->SetSpritePos({(float)(960 + i * 100), 540});
+					// card->SetSpritePos(pos);
+					i++;
+				}
+			}
+			if (Handslimit_ == true) {
+				if (joyState.Gamepad.wButtons == XINPUT_GAMEPAD_B) {
+					hands_.clear(); // カードを捨てる
+					isTrash_ = true;
+					Handslimit_ = false;
+					TakeCount_ = 0;
+				}
+			}
+		}
+		/// 5枚手札を用意
+		if (TakeCount_ == 5) {
+			Handslimit_ = true;
 		}
 	}
-	for (int i = 0; i < 5; i++) {
-		card_[i]->DeckUpdate();
+#ifdef _DEBUG
+	// 画面の座標を表示
+	ImGui::Begin("Card");
+	ImGui::Text("%d\n", DeckCount_);
+	ImGui::Text("%d\n", TakeCount_);
+	ImGui::End();
+#endif !_DEBUG
+
+}
+
+
+void CardOperator::Draw() {
+	// 手札描画
+	for (Card* card : hands_) {
+		card->Draw();
 	}
-	
 }
 
-void CardOperator::TrashUpdate() {
-	
+
+void CardOperator::SetType(int cardType) { 
+	cardType_ = static_cast<CardType>(cardType); 
 }
 
-void CardOperator::Draw() { 
-	
-}
-
-void CardOperator::Update()
-{ 
-	
-}
 
 
 
