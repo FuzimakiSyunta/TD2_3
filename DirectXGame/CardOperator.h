@@ -47,11 +47,11 @@ private:
 
 	//引いた数
 	int TakeCount_;
-	//// suteta数
-	//int TakeCount_;
+	// 捨てた
+	bool isTrash_;
 	//5枚でストップ
 	bool Handslimit_;
-
-
+	//山札の枚数可視化
+	int DeckCount_;
 	CardType cardType_;
 };
