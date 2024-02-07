@@ -4,25 +4,20 @@
 TitleScene::TitleScene() {}
 
 // デストラクタ
-TitleScene::~TitleScene() 
-{
-	delete spriteTitle_;
-}
+TitleScene::~TitleScene() { delete spriteTitle_; }
 
 // 初期化
-void TitleScene::Initialize() 
-{
+void TitleScene::Initialize() {
 	dxCommon_ = DirectXCommon::GetInstance();
 	input_ = Input::GetInstance();
 
-	//テクスチャロード
+	// テクスチャロード
 	uint32_t textureTitle = TextureManager::Load("Title.png");
 	uint32_t textureEx = TextureManager::Load("ex.png");
 
 	spriteTitle_ =
 	    Sprite::Create(textureTitle, {0.0f, 0.0f}, {1.0f, 1.0f, 1.0f, 1.0f}, {0.0f, 0.0f});
 	spriteEx_ = Sprite::Create(textureEx, {0.0f, 0.0f}, {1.0f, 1.0f, 1.0f}, {0.0f, 0.0f});
-
 }
 
 // 更新
@@ -31,31 +26,27 @@ void TitleScene::Update() {
 	XINPUT_STATE joyState;
 
 	if (Input::GetInstance()->GetJoystickState(0, joyState)) {
-		if (joyState.Gamepad.wButtons == XINPUT_GAMEPAD_A)
-		{
+		if (joyState.Gamepad.wButtons == XINPUT_GAMEPAD_A) {
 			isSceneEnd = true;
 		}
 	}
 	Sleep(1 * 120);
 }
 
-
 // 描画
-void TitleScene::Draw()
-{
-	//コマンドリストの取得
+void TitleScene::Draw() {
+	// コマンドリストの取得
 	ID3D12GraphicsCommandList* commandList = dxCommon_->GetCommandList();
 
 #pragma region 背景スプライト描画
-	//背景スプライト描画
+	// 背景スプライト描画
 	Sprite::PreDraw(commandList);
 	///
-
 
 	///
 	// スプライト描画後処理(
 	Sprite::PostDraw();
-	//深度バッファクリア
+	// 深度バッファクリア
 	dxCommon_->ClearDepthBuffer();
 #pragma endregion
 #pragma region 3Dオブジェクト描画
@@ -84,12 +75,10 @@ void TitleScene::Draw()
 	Sprite::PostDraw();
 
 #pragma endregion
-
 }
 
 // シーンのリセット
-void TitleScene::SceneReset() 
-{ 
+void TitleScene::SceneReset() {
 	Initialize();
 	isSceneEnd = false;
 }

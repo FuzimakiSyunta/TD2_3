@@ -113,7 +113,6 @@ void GameScene::Update()
 	//敵キャラの更新　
 	enemy_->Update();
 	//説明シーンの更新
-	exScene_->Update();
 	ground_->Update();
 	//カード操作
 	cardOperator_->Update();

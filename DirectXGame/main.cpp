@@ -27,7 +27,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	ClearScene* clearScene = nullptr;
 	OverScene* overScene = nullptr;
 	Gauge* gauge = nullptr;
-	ExScene* exScene = nullptr;
 
 	// ゲームウィンドウの作成
 	win = WinApp::GetInstance();
