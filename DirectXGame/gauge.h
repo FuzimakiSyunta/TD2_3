@@ -25,6 +25,14 @@ public:
 
 	float GetHPgauge() { return HPgauge; };
 
+	bool isGaugeEnd = false;
+
+	bool IsGaugeEnd() { return isGaugeEnd; }
+
+	void GaugeOver();
+
+	void GaugeReset();
+
 private:
 	//キー入力待機用の変数
 	int keyCoolTime_;

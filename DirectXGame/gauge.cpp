@@ -2,13 +2,11 @@
 
 void Gauge::Initialize() 
 {
-	//ゲージの初期化
-	gauge_ = 1100.0f;
 	//HPゲージの初期化
 	HPgauge = 500.0f;
 	//キー入力待機時間の初期化
 	keyCoolTime_ = 30;
-	gauge_ = 0.0f;
+	gauge_ = 10.0f;
 	//シングルだから呼び出す
 	input_ = Input::GetInstance();
 }
@@ -62,24 +60,23 @@ void Gauge::Update()
 				}
 			}
 		}
+	}
 
-		if (gauge_ >= 1000) {//ゲージオーバー
-			gaugeCount = 1;//カウント１
-			
-		}
+	if (gauge >= 1000) { // ゲージオーバー
+		gaugeCount = 1;   // カウント１
 	}
 
 	if (gaugeCount == 1)
 	{
-		//おなかすいて集中力が。。。
+		GaugeOver();
 	}
 		
 
-	if (gauge_ <= 0) {
-		gauge_ = 0;
+	if (gauge <= 0) {
+		gauge = 0;
 	}
-	if (gauge_ >= 1100) {
-		gauge_ = 1100;
+	if (gauge >= 1100) {
+		gauge = 1100;
 	}
 	if (HPgauge <= 0) {
 		HPgauge = 0;
@@ -92,6 +89,18 @@ void Gauge::Update()
 }
 
 void Gauge::Draw() {}
+
+void Gauge::GaugeOver() 
+{
+	isGaugeEnd = true; }
+
+void Gauge::GaugeReset()
+{
+	isGaugeEnd = false;
+	Initialize();
+}
+
+
 
 
 
