@@ -13,7 +13,7 @@
 #include "Object1.h"
 #include "Object2.h"
 #include "Object3.h"
-
+#include "Ex.h"
 #include <Scene.h>
 
 /// <summary>
@@ -81,6 +81,7 @@ private: // メンバ変数
 	//テクスチャハンドル
 	uint32_t textureHandle_ = 0;
 	uint32_t HPgaugeTexture_ = 0;
+	uint32_t exTexture_ = 0;
 
 	//スプライト
 	Sprite* sprite_ = nullptr;
@@ -88,6 +89,8 @@ private: // メンバ変数
 	Sprite* HPsprite_ = nullptr;
 	//クリア画面のスプライト
 	Sprite* clearSprite_ = nullptr;
+	//説明スプライト
+	Sprite* exSprite_ = nullptr;
 
 	//ワールドトランスフォーム　
 	WorldTransform worldTransform_;
@@ -98,6 +101,9 @@ private: // メンバ変数
 	std::unique_ptr<Gauge> gauge_;
 	//HPゲージ
 	std::unique_ptr<Gauge> HPgauge_;
+	// 説明
+	std::unique_ptr<Ex> ex_;
+	
 
 	//3Dモデル
 	std::unique_ptr<Model> model_;

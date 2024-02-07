@@ -34,6 +34,12 @@ void GameScene::Initialize() {
 	// スプライト読み込み
 	textureHandle_ = TextureManager::Load("gauge/Stamina.png");
 	HPgaugeTexture_ = TextureManager::Load("gauge/HPGauge.png");
+	exTexture_ = TextureManager::Load("Ex.png");
+
+	//説明描画設定
+	exSprite_ = Sprite::Create(exTexture_, {0, 0});
+	ex_ = std::make_unique<Ex>();
+	ex_->Initialize();
 
 	// 警戒値ゲージの描画設定
 	sprite_ = Sprite::Create(textureHandle_, {100, 50});
@@ -82,8 +88,6 @@ void GameScene::Initialize() {
 	modelShelf_.reset(Model::CreateFromOBJ("shelf", true));
 	// オブジェクト３の初期化
 	object3_->Initialize(modelJar_.get(), modelShelf_.get());
-
-
 }
 
 void GameScene::Update() 
@@ -101,11 +105,12 @@ void GameScene::Update()
 	//スカイドームの更新
 	skydome_->Update();
 
+	ex_->Update();
 
 	size = sprite_->GetSize();
 	size.x = gauge_->GetGauge();
 	sprite_->SetSize(size);
-	gauge_->Update();
+	//gauge_->Update();
 
 	//HPバーのサイズ変更
 	HPsize = HPsprite_->GetSize();
@@ -124,11 +129,6 @@ void GameScene::Update()
 		clearCount = true;
 		isSceneEnd = true;
 	}
-
-	
-
-	
-
 
 }
 
@@ -183,6 +183,7 @@ void GameScene::Draw() {
 	HPsprite_->Draw();
 
 	cardOperator_->Draw();
+	ex_->Draw();
 	
 	// スプライト描画後処理
 	Sprite::PostDraw();
