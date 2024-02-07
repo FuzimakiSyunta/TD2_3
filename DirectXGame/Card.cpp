@@ -1,40 +1,22 @@
 ﻿#include "Card.h"
 #include "ImGuiManager.h"
 
-void Card::Initialize()
-{
-	/// カードのテクスチャ読み込み
-	cardTexture_[0] = TextureManager::Load("HEALcardBase.png");
-	cardTexture_[1] = TextureManager::Load("ATKcardBase.png");
-	cardTexture_[2] = TextureManager::Load("BUFFcardBase.png");
-	cardTexture_[3] = TextureManager::Load("DEFcardBase.png");
-	cardSprite_[0] = Sprite::Create(cardTexture_[0], {120, 180});
-	cardSprite_[1] = Sprite::Create(cardTexture_[1], {260, 180});
-	cardSprite_[2] = Sprite::Create(cardTexture_[2], {400, 180});
-	cardSprite_[3] = Sprite::Create(cardTexture_[3], {540, 180});
-}
+// やること初期化の引数でカードのテクスチャハンドルをカードｵﾍﾟﾚｰﾀｰから受け取る
+// 受け取ったテクスチャハンドルでspriteをクリエイトする
 
-void Card::DeckUpdate() {
-	
-	
-}
+void Card::Initialize(CardType cardType, uint32_t textureHandle) { 
+	cardType_ = cardType;
+	textureHandle_ = textureHandle;
 
-void Card::HandCardUpdate() {
-
+	// spriteの実体生成
+	sprite_ = Sprite::Create(textureHandle_, {0,0});
 }
 
 void Card::Draw() { 
-	
-	cardSprite_[0]->Draw();
-	
-	
-	cardSprite_[1]->Draw();
-	
-	
-	cardSprite_[2]->Draw();
-	
-	
-	cardSprite_[3]->Draw();
-	
+	sprite_->Draw();
+}
+
+void Card::SetSpritePos(Vector2 pos) { 
+	sprite_->SetPosition(pos); 
 }
 

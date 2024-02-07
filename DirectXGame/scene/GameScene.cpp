@@ -3,7 +3,7 @@
 #include <cassert>
 
 
-GameScene::GameScene() {}
+GameScene::GameScene(){}
 
 GameScene::~GameScene() 
 {
@@ -58,6 +58,8 @@ void GameScene::Initialize() {
 	//オブジェクト１の初期化
 	object1_->Initialize(modelObject1_.get());
 
+
+
 	// オブジェクト２の生成
 	object2_ = std::make_unique<Object2>();
 	// オブジェクト3Dモデルの作成
@@ -85,8 +87,6 @@ void GameScene::Update()
 	enemy_->Update();
 	//カード操作
 	cardOperator_->Update();
-	///
-	cardOperator_->TakeUpdate();
 
 
 
