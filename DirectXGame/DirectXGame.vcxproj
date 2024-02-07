@@ -117,6 +117,8 @@
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MyMath.cpp" />
+    <ClCompile Include="Object1.cpp" />
+    <ClCompile Include="Object2.cpp" />
     <ClCompile Include="scene\GameScene.cpp" />
     <ClCompile Include="TitleScene.cpp" />
   </ItemGroup>

@@ -16,11 +16,6 @@ void GameScene::Initialize() {
 	input_ = Input::GetInstance();
 	audio_ = Audio::GetInstance();
 	viewProjection_.Initialize();
-	/// 山札の生成
-	card_ = std::make_unique<Card>();
-	
-	///山札
-	card_->Initialize();
 
 	//ワールドトランスフォーム
 	worldTransform_.Initialize();
@@ -56,6 +51,20 @@ void GameScene::Initialize() {
 	//敵の初期化
 	enemy_->Initialize(modelEnemyHead_.get());
 	
+	//オブジェクト１の生成
+	object1_ = std::make_unique<Object1>();
+	//オブジェクト3Dモデルの作成
+	modelObject1_.reset(Model::CreateFromOBJ("object1", true));
+	//オブジェクト１の初期化
+	object1_->Initialize(modelObject1_.get());
+
+	// オブジェクト２の生成
+	object2_ = std::make_unique<Object2>();
+	// オブジェクト3Dモデルの作成
+	modelDynamite_.reset(Model::CreateFromOBJ("dynamite", true));
+	modelBox_.reset(Model::CreateFromOBJ("box", true));
+	// オブジェクト２の初期化
+	object2_->Initialize(modelDynamite_.get(), modelBox_.get());
 }
 
 void GameScene::Update() 
@@ -64,16 +73,11 @@ void GameScene::Update()
 	enemy_->Update();
 	//カード操作
 	cardOperator_->Update();
-	/// 山札
-	card_->DeckUpdate();
-
-	///
-	cardOperator_->FazeUpdate();
 	///
 	cardOperator_->TakeUpdate();
 
 
-	//警戒値ゲージのサイズ変更
+
 	size = sprite_->GetSize();
 	size.x = gauge_->GetGauge();
 	sprite_->SetSize(size);
@@ -91,7 +95,7 @@ void GameScene::Update()
 
 	gauge_->Update();
 
-	/*objectBreak_->Update();*/
+	objectBreak_->Update();
 
 	//シーン切り替えのトリガー
 	if (input_->TriggerKey(DIK_0))//クリア条件
@@ -135,7 +139,9 @@ void GameScene::Draw() {
 	/// ここに3Dオブジェクトの描画処理を追加できる
 	/// </summary>
 
-	enemy_->Draw(viewProjection_);
+	/*enemy_->Draw(viewProjection_);*/
+	object1_->Draw(viewProjection_);
+	object2_->Draw(viewProjection_);
 
 	// 3Dオブジェクト描画後処理
 	Model::PostDraw();
@@ -152,6 +158,8 @@ void GameScene::Draw() {
 	sprite_->Draw();
 	HPsprite_->Draw();
 
+	cardOperator_->Draw();
+	
 	// スプライト描画後処理
 	Sprite::PostDraw();
 
