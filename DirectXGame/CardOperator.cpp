@@ -50,12 +50,19 @@ void CardOperator::Initialize() {
 	for (Card* card : deck_) {
 		std::cout << card << std::endl;
 	}
+	//引いた数カウント
+	TakeCount_ = 0;
+	//
+	Handslimit_ = false;
+
+	
 }
 
 void CardOperator::TakeUpdate() {
 	// どろー、deck_から手札にcard移動する
 	hands_.splice(hands_.end(), std::move(deck_), deck_.begin());
-	Sleep(1 * 100);
+	TakeCount_ += 1;
+	Sleep(1 * 120);
 }
 
 void CardOperator::Update() {
@@ -63,8 +70,10 @@ void CardOperator::Update() {
 	XINPUT_STATE joyState;
 	/// 
 	if (Input::GetInstance()->GetJoystickState(0, joyState)) {
-		if (joyState.Gamepad.wButtons == XINPUT_GAMEPAD_A) {
-			TakeUpdate();
+		if (joyState.Gamepad.wButtons == XINPUT_GAMEPAD_X) {
+			if (Handslimit_==false) {
+				TakeUpdate();//カードを追加
+			}
 			int i = 0;
 			// 例　手札の描画用位置の設定
 			for (Card* card : hands_) {
@@ -75,27 +84,27 @@ void CardOperator::Update() {
 				i++;
 			}
 		}
+		if (Handslimit_ == true) {
+			if (joyState.Gamepad.wButtons == XINPUT_GAMEPAD_B) {
+				hands_.pop_back();//カードを捨てる
+				Sleep(1 * 120);
+			}
+		}
+	}
+	///5枚手札を用意
+	if (TakeCount_ == 5) {
+		Handslimit_ = true;
 	}
 
-//#ifdef _DEBUG
-//	// 画面の座標を表示
-//	ImGui::Begin("Card");
-//	ImGui::Text("%d\n", TakeCount_);
-//	ImGui::End();
-//#endif !_DEBUG
+#ifdef _DEBUG
+	// 画面の座標を表示
+	ImGui::Begin("Card");
+	ImGui::Text("%d\n", TakeCount_);
+	ImGui::End();
+#endif !_DEBUG
 
 }
 
-void CardOperator::TrashUpdate() {
-	/*/// ゲームパッドの状態を得る変数
-	XINPUT_STATE joyState;
-	/// カードの捨てる処理
-	if (Input::GetInstance()->GetJoystickState(0, joyState)) {
-		if (joyState.Gamepad.wButtons == XINPUT_GAMEPAD_A) {
-			
-		}
-	}*/
-}
 
 void CardOperator::Draw() {
 	// 手札描画

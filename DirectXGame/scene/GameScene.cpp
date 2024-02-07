@@ -34,10 +34,8 @@ void GameScene::Initialize() {
 
 void GameScene::Update() 
 {
-	///最初のカード動作
+	//カード動作
 	cardOperator_->Update();
-	///カードを捨てる
-	cardOperator_->TrashUpdate();
 
 	size = sprite_->GetSize();
 

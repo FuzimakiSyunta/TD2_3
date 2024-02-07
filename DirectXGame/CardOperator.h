@@ -14,20 +14,15 @@ public:
 	void Initialize();
 
 	/// <summary>
-	/// 手札動作更新
+	/// 更新
 	/// </summary>
 	void Update();
 
 	/// <summary>
-	/// 更新
+	/// 手札更新
 	/// </summary>
 	void TakeUpdate();
 
-
-	/// <summary>
-	/// 捨てる動作
-	/// </summary>
-	void TrashUpdate();
 
 	/// <summary>
 	/// カード描画
@@ -49,6 +44,14 @@ private:
 	std::list<Card*> hands_;
 	// デッキ
 	std::list<Card*> deck_;
+
+	//引いた数
+	int TakeCount_;
+	//// suteta数
+	//int TakeCount_;
+	//5枚でストップ
+	bool Handslimit_;
+
 
 	CardType cardType_;
 };
