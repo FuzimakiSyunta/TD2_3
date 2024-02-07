@@ -3,7 +3,7 @@
 #include <cassert>
 
 
-GameScene::GameScene() {}
+GameScene::GameScene(){}
 
 GameScene::~GameScene() 
 {
