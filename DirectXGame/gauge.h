@@ -33,6 +33,14 @@ public:
 
 	void GaugeReset();
 
+	bool isHpEnd = false;
+
+	bool IsHpEnd() { return isHpEnd; }
+
+	void HpOver();
+
+	void HpReset();
+
 private:
 	//キー入力待機用の変数
 	int keyCoolTime_;
@@ -56,6 +64,8 @@ private:
 
 	//ゲージのカウント
 	float gaugeCount = 0;
+
+	float hpCount = 0;
 
 	
 };

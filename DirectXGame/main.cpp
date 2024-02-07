@@ -119,12 +119,23 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 			gauge->Update();
 
+			if (gauge->IsHpEnd() == true)
+			{
+				sceneNo = gameScene->NextScene1();
+
+				gameScene->sceneReset();
+
+				gauge->GaugeReset();
+			}
+
 			if (gauge->IsGaugeEnd() == true)
 			{
 				//オーバーシーンへ
 				sceneNo = gameScene->NextScene2();
 
 				gameScene->sceneReset();
+
+				gauge->GaugeReset();
 			}
 
 			break;
