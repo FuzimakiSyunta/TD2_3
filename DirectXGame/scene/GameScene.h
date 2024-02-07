@@ -54,6 +54,17 @@ public:
 
 	bool IsSceneEnd() { return isSceneEnd; }
 
+	// 次のシーンをゲームプレイシーンへ
+	SceneType NextScene1() { return SceneType::kClear; }
+
+	SceneType NextScene2() { return SceneType::kOver; }
+
+	//クリアしたならtrueにしClearシーンへ
+	//オーバーならそのままfalseでOverシ－ンへ
+	bool clearCount = false;
+
+	bool ClearCount() { return clearCount; }
+
 private: // メンバ変数
 	DirectXCommon* dxCommon_ = nullptr;
 	Input* input_ = nullptr;

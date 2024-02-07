@@ -1,53 +1,47 @@
-﻿#include "TitleScene.h"
+﻿#include "ClearScene.h"
 
-// コンストラクタ
-TitleScene::TitleScene() {}
+//コンストラクタ
+ClearScene::ClearScene() {}
 
-// デストラクタ
-TitleScene::~TitleScene() 
-{
-	delete spriteTitle_;
-}
+//デストラクタ
+ClearScene::~ClearScene() 
+{ delete spriteClear_; }
 
-// 初期化
-void TitleScene::Initialize() 
+//初期化
+void ClearScene::Initialize()
 {
 	dxCommon_ = DirectXCommon::GetInstance();
 	input_ = Input::GetInstance();
 
-	//テクスチャロード
-	uint32_t textureTitle = TextureManager::Load("uvChecker.png");
+	// テクスチャロード
+	uint32_t textureTitle = TextureManager::Load("kattyuu.jpg");
 
-	spriteTitle_ =
+	spriteClear_ =
 	    Sprite::Create(textureTitle, {0.0f, 0.0f}, {1.0f, 1.0f, 1.0f, 1.0f}, {0.0f, 0.0f});
-
 }
 
 // 更新
-void TitleScene::Update()
-{ 
-	if (input_->TriggerKey(DIK_SPACE))
-	{
+void ClearScene::Update() {
+	if (input_->TriggerKey(DIK_SPACE)) {
 		isSceneEnd = true;
 	}
 }
 
+
 // 描画
-void TitleScene::Draw()
-{
-	//コマンドリストの取得
+void ClearScene::Draw() {
+	// コマンドリストの取得
 	ID3D12GraphicsCommandList* commandList = dxCommon_->GetCommandList();
 
 #pragma region 背景スプライト描画
-	//背景スプライト描画
+	// 背景スプライト描画
 	Sprite::PreDraw(commandList);
 	///
-
 
 	///
 	// スプライト描画後処理(
 	Sprite::PostDraw();
-	//深度バッファクリア
+	// 深度バッファクリア
 	dxCommon_->ClearDepthBuffer();
 #pragma endregion
 #pragma region 3Dオブジェクト描画
@@ -70,17 +64,13 @@ void TitleScene::Draw()
 	/// ここに前景スプライトの描画処理を追加できる
 	/// </summary>
 
-	spriteTitle_->Draw();
+	spriteClear_->Draw();
 
 	// スプライト描画後処理
 	Sprite::PostDraw();
 
 #pragma endregion
-
 }
 
 // シーンのリセット
-void TitleScene::SceneReset() 
-{ 
-	isSceneEnd = false;
-}
+void ClearScene::SceneReset() { isSceneEnd = false; }

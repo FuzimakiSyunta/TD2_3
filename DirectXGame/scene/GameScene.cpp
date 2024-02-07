@@ -59,6 +59,20 @@ void GameScene::Update()
 	gauge_->Update();
 
 	objectBreak_->Update();
+
+	//シーン切り替えのトリガー
+	if (input_->TriggerKey(DIK_0))
+	{
+		clearCount = true;
+		isSceneEnd = true;
+	}
+
+	if (input_->TriggerKey(DIK_1))
+	{
+		clearCount = false;
+		isSceneEnd = true;
+	}
+
 }
 
 void GameScene::Draw() { 
@@ -109,4 +123,11 @@ void GameScene::Draw() {
 	Sprite::PostDraw();
 
 #pragma endregion
+}
+
+void GameScene::sceneReset() 
+{
+	isSceneEnd = false;
+	clearCount = false;
+	Initialize();
 }

@@ -1,10 +1,10 @@
-#pragma once
+ï»¿#pragma once
 
-//ƒƒCƒ“‚ÌƒV[ƒ“Ø‚è‘Ö‚¦‚ÅŽg‚¤
+//ãƒ¡ã‚¤ãƒ³ã®ã‚·ãƒ¼ãƒ³åˆ‡ã‚Šæ›¿ãˆã§ä½¿ã†
 enum class SceneType 
 {
-	kTitle,	//ƒ^ƒCƒgƒ‹ƒV[ƒ“
-	kGame,  //ƒQ[ƒ€ƒvƒŒƒCƒV[ƒ“
-	kClear,	//ƒQ[ƒ€ƒNƒŠƒAƒV[ƒ“
-	kOver,	//ƒQ[ƒ€ƒI[ƒo[ƒV[ƒ“
+	kTitle,	//ã‚¿ã‚¤ãƒˆãƒ«ã‚·ãƒ¼ãƒ³
+	kGame,  //ã‚²ãƒ¼ãƒ ãƒ—ãƒ¬ã‚¤ã‚·ãƒ¼ãƒ³
+	kClear,	//ã‚²ãƒ¼ãƒ ã‚¯ãƒªã‚¢ã‚·ãƒ¼ãƒ³
+	kOver,	//ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼ã‚·ãƒ¼ãƒ³
 };
