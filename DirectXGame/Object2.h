@@ -19,4 +19,7 @@ private:
 	// モデル
 	Model* modelDynamite_;
 	Model* modelBox_;
+
+	// オブジェクト2のHP
+	int object2HP = 5;
 };

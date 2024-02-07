@@ -19,4 +19,7 @@ private:
 	// モデル
 	Model* modelJar_;
 	Model* modelShelf_;
-};
+
+	// オブジェクト3のHP
+	int object3HP = 5;
+    };

@@ -92,8 +92,10 @@ void GameScene::Update()
 	object3_->Update();
 	//敵キャラの更新　
 	enemy_->Update();
+
 	//カード操作
 	cardOperator_->Update();
+
 	//スカイドームの更新
 	skydome_->Update();
 

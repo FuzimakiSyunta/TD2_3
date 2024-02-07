@@ -37,4 +37,6 @@ private:
 	Input* input_ = nullptr;
 
 	Sprite* spriteTitle_ = nullptr;
+
+	Sprite* spriteEx_;
 };

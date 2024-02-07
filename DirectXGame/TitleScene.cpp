@@ -17,9 +17,11 @@ void TitleScene::Initialize()
 
 	//テクスチャロード
 	uint32_t textureTitle = TextureManager::Load("Title.png");
+	uint32_t textureEx = TextureManager::Load("ex.png");
 
 	spriteTitle_ =
 	    Sprite::Create(textureTitle, {0.0f, 0.0f}, {1.0f, 1.0f, 1.0f, 1.0f}, {0.0f, 0.0f});
+	spriteEx_ = Sprite::Create(textureEx, {0.0f, 0.0f}, {1.0f, 1.0f, 1.0f}, {0.0f, 0.0f});
 
 }
 
