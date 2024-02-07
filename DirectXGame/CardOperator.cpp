@@ -13,28 +13,28 @@ void CardOperator::Initialize() {
 	cardTexture_[3] = TextureManager::Load("HEALcardBase.png");
 	///山札の総数20枚
 	//ATK
-	for (int i = 0; i < 16; i++) {
+	for (int i = 0; i < 10; i++) {
 		// デッキに入れる前に初期化をしてカードタイプ決めてる
 		Card* card = new Card();
 		card->Initialize(CardType::kAtk, cardTexture_[static_cast<size_t>(CardType::kAtk)]);
 		deck_.push_back(card);
 	}
 	//DEF
-	for (int i = 0; i < 12; i++) {
+	for (int i = 0; i < 5; i++) {
 		// デッキに入れる前に初期化をしてカードタイプ決めてる
 		Card* card = new Card();
 		card->Initialize(CardType::kDef, cardTexture_[static_cast<size_t>(CardType::kDef)]);
 		deck_.push_back(card);
 	}
 	//BUFF
-	for (int i = 0; i < 7; i++) {
+	for (int i = 0; i < 3; i++) {
 		// デッキに入れる前に初期化をしてカードタイプ決めてる
 		Card* card = new Card();
 		card->Initialize(CardType::kBuff, cardTexture_[static_cast<size_t>(CardType::kBuff)]);
 		deck_.push_back(card);
 	}
 	//HEAL
-	for (int i = 0; i < 5; i++) {
+	for (int i = 0; i < 2; i++) {
 		// デッキに入れる前に初期化をしてカードタイプ決めてる
 		Card* card = new Card();
 		card->Initialize(CardType::kHeal, cardTexture_[static_cast<size_t>(CardType::kHeal)]);
