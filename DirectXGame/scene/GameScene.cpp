@@ -33,13 +33,19 @@ void GameScene::Initialize() {
 
 	// スプライト読み込み
 	textureHandle_ = TextureManager::Load("gauge/Stamina.png");
+	gaugeFrame_ = TextureManager::Load("gauge/gaugeFrame.png");
 	HPgaugeTexture_ = TextureManager::Load("gauge/HPGauge.png");
+
 	exTexture_ = TextureManager::Load("Ex.png");
 
 	// 警戒値ゲージの描画設定
 	sprite_ = Sprite::Create(textureHandle_, {100, 50});
 	gauge_ = std::make_unique<Gauge>();
 	gauge_->Initialize();
+	//警戒値ゲージ枠の描画設定
+	frameSprite_ = Sprite::Create(gaugeFrame_, {100, 50});
+	frame_ = std::make_unique<Gauge>();
+	frame_->Initialize();
 	// HPゲージの描画設定
 	HPsprite_ = Sprite::Create(HPgaugeTexture_, {300, 600});
 	HPgauge_ = std::make_unique<Gauge>();
@@ -181,6 +187,7 @@ void GameScene::Draw() {
 	/// </summary>
 
 	sprite_->Draw();
+	frameSprite_->Draw();
 	HPsprite_->Draw();
 
 	cardOperator_->Draw();

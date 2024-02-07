@@ -6,7 +6,7 @@ void Gauge::Initialize()
 	HPgauge = 500.0f;
 	//キー入力待機時間の初期化
 	keyCoolTime_ = 30;
-	gauge = 10.0f;
+	gauge = 0.0f;
 	//シングルだから呼び出す
 	input_ = Input::GetInstance();
 }
@@ -19,7 +19,7 @@ void Gauge::Update() { // キー入力待機時間の更新
 
 	
 		if (keyCoolTime_ == 0) {
-			if (gauge >= 0 && gauge <= 1100) {
+			if (gauge >= 0) {
 				// デバッグ用キー
 				if (input_->PushKey(DIK_DOWN)) {
 					gauge -= 1100.0f;
@@ -82,8 +82,8 @@ void Gauge::Update() { // キー入力待機時間の更新
 	if (gauge <= 0) {
 		gauge = 0;
 	}
-	if (gauge >= 1100) {
-		gauge = 1100;
+	if (gauge >= 700) {
+		gauge = 700;
 	}
 	if (HPgauge <= 0) {
 		HPgauge = 0;

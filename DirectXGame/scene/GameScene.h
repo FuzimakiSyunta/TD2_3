@@ -81,11 +81,14 @@ private: // メンバ変数
 	
 	//テクスチャハンドル
 	uint32_t textureHandle_ = 0;
+	uint32_t gaugeFrame_ = 0;
 	uint32_t HPgaugeTexture_ = 0;
 	uint32_t exTexture_ = 0;
 
 	//スプライト
 	Sprite* sprite_ = nullptr;
+	//枠スプライト
+	Sprite* frameSprite_ = nullptr;
 	//HPスプライト
 	Sprite* HPsprite_ = nullptr;
 	//クリア画面のスプライト
@@ -100,6 +103,8 @@ private: // メンバ変数
 
 	//ゲージ
 	std::unique_ptr<Gauge> gauge_;
+	//ゲージ枠
+	std::unique_ptr<Gauge> frame_;
 	//HPゲージ
 	std::unique_ptr<Gauge> HPgauge_;
 	
