@@ -39,7 +39,7 @@ private:
 	WorldTransform worldTransform_;
 
 	// 警戒値のゲージ
-	float gauge;
+	float gauge_;
 	//HPゲージ
 	float HPgauge;
 };
