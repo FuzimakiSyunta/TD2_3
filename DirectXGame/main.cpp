@@ -9,6 +9,7 @@
 #include "TitleScene.h"
 #include "ClearScene.h"
 #include "OverScene.h"
+#include "gauge.h"
 
 // Windowsアプリでのエントリーポイント(main関数)
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
@@ -78,6 +79,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	// オーバーシーンの初期化
 	overScene = new OverScene();
 	overScene->Initialize();
+
+
 
 	SceneType sceneNo = SceneType::kTitle;
 

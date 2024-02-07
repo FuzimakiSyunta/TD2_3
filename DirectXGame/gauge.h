@@ -44,8 +44,11 @@ private:
 	//ゲージのカウント
 	float gaugeCount = 0;
 
-	
 	float gauge;
+
 	//HPゲージ
 	float HPgauge;
+
+
+
 };

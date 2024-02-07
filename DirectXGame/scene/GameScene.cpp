@@ -106,11 +106,10 @@ void GameScene::Update()
 		isSceneEnd = true;
 	}
 
-	if (input_->TriggerKey(DIK_1))//ゲームオーバー条件
-	{
-		clearCount = false;
-		isSceneEnd = true;
-	}
+	
+
+	
+
 
 }
 

@@ -3,7 +3,7 @@
 void Gauge::Initialize() 
 {
 	//ゲージの初期化
-	gauge = 1100.0f;
+	gauge_ = 1100.0f;
 	//HPゲージの初期化
 	HPgauge = 500.0f;
 	//キー入力待機時間の初期化
@@ -23,7 +23,7 @@ void Gauge::Update()
 	if (gaugeCount == 0)
 	{
 		if (keyCoolTime_ == 0) {
-			if (gauge >= 0 && gauge <= 1000) {
+			if (gauge >= 0 && gauge <= 1100) {
 
 				// デバッグ用キー
 				if (input_->PushKey(DIK_DOWN)) {
@@ -63,23 +63,23 @@ void Gauge::Update()
 			}
 		}
 
-		if (gauge_ >= 1000) {
-			gaugeCount = 1;
+		if (gauge_ >= 1000) {//ゲージオーバー
+			gaugeCount = 1;//カウント１
+			
 		}
 	}
-		
-	
+
 	if (gaugeCount == 1)
 	{
+		//おなかすいて集中力が。。。
+	}
 		
-	}
-	
 
-	if (gauge <= 0) {
-		gauge = 0;
+	if (gauge_ <= 0) {
+		gauge_ = 0;
 	}
-	if (gauge >= 1100) {
-		gauge = 1100;
+	if (gauge_ >= 1100) {
+		gauge_ = 1100;
 	}
 	if (HPgauge <= 0) {
 		HPgauge = 0;
@@ -91,4 +91,7 @@ void Gauge::Update()
 	
 }
 
-void Gauge::Draw(){}
+void Gauge::Draw() {}
+
+
+
