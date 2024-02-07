@@ -21,7 +21,7 @@ public:
 	//スプライトの幅
 	Vector2 size_ = {100.0f, 100.0f};
 	
-	float GetGauge() { return gauge_; };
+	float GetGauge() { return gauge; };
 
 	float GetHPgauge() { return HPgauge; };
 
@@ -39,7 +39,7 @@ private:
 	WorldTransform worldTransform_;
 
 	// 警戒値のゲージ
-	float gauge_;
+	float gauge;
 	//HPゲージ
 	float HPgauge;
 };
