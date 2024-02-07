@@ -73,8 +73,6 @@ void GameScene::Update()
 	enemy_->Update();
 	//カード操作
 	cardOperator_->Update();
-	///
-	cardOperator_->TakeUpdate();
 
 
 
