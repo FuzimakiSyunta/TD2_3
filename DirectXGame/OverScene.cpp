@@ -12,7 +12,7 @@ void OverScene::Initialize() {
 	input_ = Input::GetInstance();
 
 	// テクスチャロード
-	uint32_t textureTitle = TextureManager::Load("kattyuu.jpg");
+	uint32_t textureTitle = TextureManager::Load("GameOver.png");
 
 	spriteOver_ =
 	    Sprite::Create(textureTitle, {0.0f, 0.0f}, {1.0f, 1.0f, 1.0f, 1.0f}, {0.0f, 0.0f});
