@@ -25,6 +25,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	ClearScene* clearScene = nullptr;
 	OverScene* overScene = nullptr;
 	Gauge* gauge = nullptr;
+	ExScene* exScene = nullptr;
 
 	// ゲームウィンドウの作成
 	win = WinApp::GetInstance();
@@ -81,6 +82,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	overScene = new OverScene();
 	overScene->Initialize();
 
+	//説明の初期化
+	exScene = new ExScene;
+	exScene->Initialize();
+
 	gauge = new Gauge();
 	gauge->Initialize();
 
@@ -112,6 +117,17 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 				titleScene->SceneReset();
 			}
+			break;
+		case SceneType::kEX:
+			if (exScene->IsSceneEnd() == true) {
+				// 次のシーンを値を代入してシーン切り替え
+				sceneNo = exScene->NextScene();
+				exScene->Reset();
+			}
+
+			// タイトルシーンの毎フレーム処理
+			exScene->Updata();
+
 			break;
 		case SceneType::kGame:
 			//ゲームシーンの更新
@@ -182,6 +198,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		case SceneType::kTitle:
 			//タイトルシーンの描画
 			titleScene->Draw();
+			break;
+		case SceneType::kEX:
+			exScene->Draw();
 			break;
 		case SceneType::kGame:
 			// ゲームシーンの描画

@@ -36,11 +36,6 @@ void GameScene::Initialize() {
 	HPgaugeTexture_ = TextureManager::Load("gauge/HPGauge.png");
 	exTexture_ = TextureManager::Load("Ex.png");
 
-	//説明描画設定
-	exSprite_ = Sprite::Create(exTexture_, {0, 0});
-	ex_ = std::make_unique<Ex>();
-	ex_->Initialize();
-
 	// 警戒値ゲージの描画設定
 	sprite_ = Sprite::Create(textureHandle_, {100, 50});
 	gauge_ = std::make_unique<Gauge>();
@@ -104,8 +99,6 @@ void GameScene::Update()
 
 	//スカイドームの更新
 	skydome_->Update();
-
-	ex_->Update();
 
 	size = sprite_->GetSize();
 	size.x = gauge_->GetGauge();
@@ -183,7 +176,6 @@ void GameScene::Draw() {
 	HPsprite_->Draw();
 
 	cardOperator_->Draw();
-	ex_->Draw();
 	
 	// スプライト描画後処理
 	Sprite::PostDraw();

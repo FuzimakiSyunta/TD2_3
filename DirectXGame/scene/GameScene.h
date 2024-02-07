@@ -13,7 +13,7 @@
 #include "Object1.h"
 #include "Object2.h"
 #include "Object3.h"
-#include "Ex.h"
+#include "ExScene.h"
 #include <Scene.h>
 
 /// <summary>
@@ -101,8 +101,6 @@ private: // メンバ変数
 	std::unique_ptr<Gauge> gauge_;
 	//HPゲージ
 	std::unique_ptr<Gauge> HPgauge_;
-	// 説明
-	std::unique_ptr<Ex> ex_;
 	
 
 	//3Dモデル

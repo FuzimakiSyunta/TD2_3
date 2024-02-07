@@ -4,6 +4,7 @@
 enum class SceneType 
 {
 	kTitle,	//タイトルシーン
+	kEX, //説明シーン
 	kGame,  //ゲームプレイシーン
 	kClear,	//ゲームクリアシーン
 	kOver,	//ゲームオーバーシーン

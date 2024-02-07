@@ -29,7 +29,7 @@ public:
 	bool IsSceneEnd() { return isSceneEnd; }
 
 	//次のシーンをゲームプレイシーンへ
-	SceneType NextScene() { return SceneType::kGame; }
+	SceneType NextScene() { return SceneType::kEX; }
 
 private:
 	DirectXCommon* dxCommon_ = nullptr;
