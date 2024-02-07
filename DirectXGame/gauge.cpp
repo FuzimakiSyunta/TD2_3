@@ -2,28 +2,23 @@
 
 void Gauge::Initialize() 
 {
-	//ゲージの初期化
-	gauge = 1100.0f;
 	//HPゲージの初期化
 	HPgauge = 500.0f;
 	//キー入力待機時間の初期化
 	keyCoolTime_ = 30;
 	gauge_ = 0.0f;
+	gauge_ = 10.0f;
 	//シングルだから呼び出す
 	input_ = Input::GetInstance();
 }
-void Gauge::Update() 
-{	//キー入力待機時間の更新
+void Gauge::Update() { // キー入力待機時間の更新
 	if (keyCoolTime_ > 0) {
 		keyCoolTime_--;
 	} else if (keyCoolTime_ <= 0) {
 		keyCoolTime_ = 0;
 	}
 
-	
-
-	if (gaugeCount == 0)
-	{
+	if (gaugeCount == 0) {
 		if (keyCoolTime_ == 0) {
 			if (gauge >= 0 && gauge <= 1100) {
 				// デバッグ用キー
@@ -65,17 +60,17 @@ void Gauge::Update()
 			}
 		}
 	}
-	if (gauge_ >= 1000)
-	{
+	if (gauge >= 1000) {
 		gaugeCount = 1;
-	
 	}
-	
-	if (gaugeCount == 1)
-	{
-		
+
+	if (gauge >= 1000) { // ゲージオーバー
+		gaugeCount = 1;  // カウント１
 	}
-	
+
+	if (gaugeCount == 1) {
+		GaugeOver();
+	}
 
 	if (gauge <= 0) {
 		gauge = 0;
@@ -89,8 +84,21 @@ void Gauge::Update()
 	if (HPgauge >= 500) {
 		HPgauge = 500;
 	}
-	
-	
 }
 
 void Gauge::Draw() {}
+
+void Gauge::GaugeOver() 
+{
+	isGaugeEnd = true; }
+
+void Gauge::GaugeReset()
+{
+	isGaugeEnd = false;
+	Initialize();
+}
+
+
+
+
+

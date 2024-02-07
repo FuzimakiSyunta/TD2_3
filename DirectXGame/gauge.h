@@ -25,6 +25,14 @@ public:
 
 	float GetHPgauge() { return HPgauge; };
 
+	bool isGaugeEnd = false;
+
+	bool IsGaugeEnd() { return isGaugeEnd; }
+
+	void GaugeOver();
+
+	void GaugeReset();
+
 private:
 	//キー入力待機用の変数
 	int keyCoolTime_;
@@ -39,10 +47,12 @@ private:
 	WorldTransform worldTransform_;
 
 	// 警戒値のゲージ
+	float gauge_;
+
 	float gauge;
+
 	//HPゲージ
 	float HPgauge;
-	float gauge_;
 
 	//ゲージのカウント
 	float gaugeCount = 0;
