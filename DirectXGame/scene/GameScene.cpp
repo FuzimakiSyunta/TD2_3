@@ -65,10 +65,22 @@ void GameScene::Initialize() {
 	modelBox_.reset(Model::CreateFromOBJ("box", true));
 	// オブジェクト２の初期化
 	object2_->Initialize(modelDynamite_.get(), modelBox_.get());
+
+	//オブジェクト３の生成
+	object3_ = std::make_unique<Object3>();
+	// オブジェクト3Dモデルの作成
+	modelJar_.reset(Model::CreateFromOBJ("jar", true));
+	modelShelf_.reset(Model::CreateFromOBJ("shelf", true));
+	// オブジェクト３の初期化
+	object3_->Initialize(modelJar_.get(), modelShelf_.get());
 }
 
 void GameScene::Update() 
 {
+	//オブジェクトの更新
+	object1_->Update();
+	object2_->Update();
+	object3_->Update();
 	//敵キャラの更新　
 	enemy_->Update();
 	//カード操作
@@ -89,9 +101,6 @@ void GameScene::Update()
 	HPsprite_->SetSize(HPsize);
 	HPgauge_->Update();
 
-	//オブジェクトの更新
-	object1_->Update();
-	object2_->Update();
 
 	gauge_->Update();
 
@@ -140,6 +149,7 @@ void GameScene::Draw() {
 	enemy_->Draw(viewProjection_);
 	object1_->Draw(viewProjection_);
 	object2_->Draw(viewProjection_);
+	object3_->Draw(viewProjection_);
 
 	// 3Dオブジェクト描画後処理
 	Model::PostDraw();
@@ -153,8 +163,8 @@ void GameScene::Draw() {
 	/// ここに前景スプライトの描画処理を追加できる
 	/// </summary>
 
-	sprite_->Draw();
-	HPsprite_->Draw();
+	/*sprite_->Draw();
+	HPsprite_->Draw();*/
 
 	cardOperator_->Draw();
 	
