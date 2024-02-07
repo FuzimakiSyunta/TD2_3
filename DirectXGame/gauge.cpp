@@ -22,24 +22,12 @@ void Gauge::Update() { // キー入力待機時間の更新
 	
 		if (keyCoolTime_ == 0) {
 			if (gauge >= 0) {
-				// デバッグ用キー
-				if (input_->PushKey(DIK_DOWN)) {
-					gauge -= 1100.0f;
-					keyCoolTime_ = 30;
-				}
-				if (input_->PushKey(DIK_UP)) {
-					gauge += 1100.0f;
-					keyCoolTime_ = 30;
-				}
 				// 左キーを押したときに警戒値ゲージを100下げる
 			    if (GameoverTime>50) {
 					gauge -= 100.0f;
 					keyCoolTime_ = 30;
 				}
 				if (gauge_ <= 1000) {
-					if (input_->PushKey(DIK_SPACE)) {
-						gauge_ += 5.0f;
-					}
 					// 右キーを押したときに警戒値ゲージを100上げる
 					if (GameoverTime>100) {
 						gauge += 100.0f;
