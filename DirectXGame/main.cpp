@@ -7,6 +7,7 @@
 #include "TextureManager.h"
 #include "WinApp.h"
 #include "TitleScene.h"
+#include "ExScene.h"
 #include "ClearScene.h"
 #include "OverScene.h"
 #include "gauge.h"
@@ -21,6 +22,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	AxisIndicator* axisIndicator = nullptr;
 	PrimitiveDrawer* primitiveDrawer = nullptr;
 	GameScene* gameScene = nullptr;
+	ExScene* exScene = nullptr;
 	TitleScene* titleScene = nullptr;
 	ClearScene* clearScene = nullptr;
 	OverScene* overScene = nullptr;
@@ -65,6 +67,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	primitiveDrawer->Initialize();
 #pragma endregion
 
+
 	// ゲームシーンの初期化
 	gameScene = new GameScene();
 	gameScene->Initialize();
@@ -80,6 +83,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	// オーバーシーンの初期化
 	overScene = new OverScene();
 	overScene->Initialize();
+
+	//説明シーンの初期化
+	exScene = new ExScene();
+	exScene->Initialize();
 
 	gauge = new Gauge();
 	gauge->Initialize();
@@ -111,6 +118,15 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				sceneNo = titleScene->NextScene();
 
 				titleScene->SceneReset();
+			}
+			break;
+		case SceneType::kEx:
+			//説明シーン更新
+			exScene->Update();
+			// シーンの切り替え処理＆説明シーンのリセット
+			if (exScene->IsExSceneEnd() == true) {
+				sceneNo = exScene->NextScene();
+				exScene->SceneReset();
 			}
 			break;
 		case SceneType::kGame:
@@ -182,6 +198,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		case SceneType::kTitle:
 			//タイトルシーンの描画
 			titleScene->Draw();
+			break;
+		case SceneType::kEx:
+			//説明シーンの描画
+			exScene->Draw();
 			break;
 		case SceneType::kGame:
 			// ゲームシーンの描画

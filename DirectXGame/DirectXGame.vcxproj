@@ -111,6 +111,7 @@
     <ClCompile Include="ClearScene.cpp" />
     <ClCompile Include="CardOperator.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="ExScene.cpp" />
     <ClCompile Include="Gauge.cpp" />
     <ClCompile Include="base\DirectXCommon.cpp" />
     <ClCompile Include="base\WinApp.cpp" />
@@ -123,7 +124,6 @@
     <ClCompile Include="OverScene.cpp" />
     <ClCompile Include="scene\GameScene.cpp" />
     <ClCompile Include="SkyDome.cpp" />
-    <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="WorldTransformEx.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -150,6 +150,7 @@
     <ClInclude Include="Card.h" />
     <ClInclude Include="CardOperator.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="ExScene.h" />
     <ClInclude Include="Gauge.h" />
     <ClInclude Include="audio\Audio.h" />
     <ClInclude Include="base\DirectXCommon.h" />

@@ -13,7 +13,7 @@
 #include "Object1.h"
 #include "Object2.h"
 #include "Object3.h"
-
+#include "ExScene.h"
 #include <Scene.h>
 
 /// <summary>
@@ -81,7 +81,7 @@ private: // メンバ変数
 	//テクスチャハンドル
 	uint32_t textureHandle_ = 0;
 	uint32_t HPgaugeTexture_ = 0;
-
+	uint32_t exTexture_ = 0;
 	//スプライト
 	Sprite* sprite_ = nullptr;
 	//HPスプライト
@@ -97,6 +97,10 @@ private: // メンバ変数
 	//ゲージ
 	std::unique_ptr<Gauge> gauge_;
 	//HPゲージ
+	//説明シーン
+	std::unique_ptr<ExScene> exScene_;
+	//説明スプライト
+	Sprite* spriteEx_;
 	std::unique_ptr<Gauge> HPgauge_;
 
 	//3Dモデル
@@ -147,4 +151,5 @@ private: // メンバ変数
 	std::unique_ptr<Model> modelJar_;
 	// 棚3Dモデル
 	std::unique_ptr<Model> modelShelf_;
+
 };

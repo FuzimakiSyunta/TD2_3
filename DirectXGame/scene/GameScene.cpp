@@ -34,6 +34,12 @@ void GameScene::Initialize() {
 	// スプライト読み込み
 	textureHandle_ = TextureManager::Load("gauge/Stamina.png");
 	HPgaugeTexture_ = TextureManager::Load("gauge/HPGauge.png");
+	// テクスチャロード
+	exTexture_ = TextureManager::Load("Ex.png");
+	//説明画像の描画設定
+	/*exSprite_ = Sprite::Create(exTexture_, {0, 0});
+	exScene_ = std::make_unique<ExScene>();
+	exScene_->Initialize();*/
 
 	// 警戒値ゲージの描画設定
 	sprite_ = Sprite::Create(textureHandle_, {100, 50});
@@ -83,7 +89,6 @@ void GameScene::Initialize() {
 	// オブジェクト３の初期化
 	object3_->Initialize(modelJar_.get(), modelShelf_.get());
 
-
 }
 
 void GameScene::Update() 
@@ -94,6 +99,8 @@ void GameScene::Update()
 	object3_->Update();
 	//敵キャラの更新　
 	enemy_->Update();
+	//説明シーンの更新
+	exScene_->Update();
 	//カード操作
 	cardOperator_->Update();
 	//スカイドームの更新
@@ -165,6 +172,7 @@ void GameScene::Draw() {
 	object2_->Draw(viewProjection_);
 	object3_->Draw(viewProjection_);
 
+
 	// 3Dオブジェクト描画後処理
 	Model::PostDraw();
 #pragma endregion
@@ -181,6 +189,7 @@ void GameScene::Draw() {
 	HPsprite_->Draw();
 
 	cardOperator_->Draw();
+	exScene_->Draw();
 	
 	// スプライト描画後処理
 	Sprite::PostDraw();
