@@ -1,15 +1,33 @@
 ﻿#include "CardOperator.h"
 #include "ImGuiManager.h"
+#include <TextureManager.h>
 
 void CardOperator::Initialize() { 
 	/// 乱数の初期化(シード値の設定)
 	srand((unsigned int)time(nullptr));
+	
 	/// カードの生成と初期化
 	for (int i = 0; i < 5; i++) {
 		card_[i] = new Card();
 		card_[i]->Initialize();
 	}
+	/// カードの有無
+	for (int i = 0; i < 5; i++) {
+		isCardtrash_[i] = false;
+	}
 	TakeInitialize();
+	
+	// 範囲for
+	// Card* card 代入先
+	// deck_ 代入するやつ
+	// 要はdeck_の要素分ループさせ、ループごとの要素をcardに代入している
+	for (Card* card : deck_) {
+		card->Initialize();
+	}
+	//山札の総数
+	for (int i = 0; i < 20; i++) {
+		deck_.push_back(new Card());
+	}
 }
 
 void CardOperator::TakeInitialize() { 
@@ -26,71 +44,34 @@ void CardOperator::FazeUpdate() {
 	
 }
 
-
-
 void CardOperator::TakeUpdate() {
 	/// ゲームパッドの状態を得る変数
 	XINPUT_STATE joyState;
 	/// カードのランダム処理
-	if (isTake_[0] == false) {
-		card_[0]->SetDecknumber((rand() % 20 + 1));
-	}
-	if (isTake_[1] == false) {
-		card_[1]->SetDecknumber((rand() % 20 + 1));
-	}
-	if (isTake_[2] == false) {
-		card_[2]->SetDecknumber((rand() % 20 + 1));
-	}
-	if (isTake_[3] == false) {
-		card_[3]->SetDecknumber((rand() % 20 + 1));
-	}
-	if (isTake_[4] == false) {
-		card_[4]->SetDecknumber((rand() % 20 + 1));
-	}
-
 	if (Input::GetInstance()->GetJoystickState(0, joyState)) {
 		if (joyState.Gamepad.wButtons == XINPUT_GAMEPAD_A) {
-			for (int i = 0; i < 5; i++) {
-				/// ランダムで山札から取る
-				isTake_[i] = true;
-			}	
+			// どろー、deck_から手札にcard移動する
+			hands_.splice(hands_.end(), std::move(deck_), deck_.begin());
+			Sleep(1 * 1000);
 		}
-		if (joyState.Gamepad.wButtons == XINPUT_GAMEPAD_B) {
-			for (int i = 0; i < 5; i++) {
-				/// ランダムで山札から取る
-				isTake_[i] = false;
-			}
-		}
-		
 	}
-
 	for (int i = 0; i < 5; i++) {
 		card_[i]->DeckUpdate();
 	}
+	
 }
 
 void CardOperator::TrashUpdate() {
 	
 }
 
+void CardOperator::Draw() { 
+	
+}
+
 void CardOperator::Update()
 { 
-	switch (riquest_) {
-	case Riquest::kTake:
-	default:
-		/// 手札からランダムで取る
-		TakeUpdate();
-		break;
-	case Riquest::kTrash:
-		/// カードを捨てる
-		TrashUpdate();
-		break;
-	} 
-  
-	/*/// IMGUI
-	ImGui::Begin("Faze");
-	ImGui::Text("%d\n", riquest_);
-	ImGui::End();*/
+	
 }
 
 

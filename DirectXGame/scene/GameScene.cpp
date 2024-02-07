@@ -18,12 +18,13 @@ void GameScene::Initialize() {
 	viewProjection_.Initialize();
 	/// 山札の生成
 	card_ = std::make_unique<Card>();
-	/// 山札
+	
+	///山札
 	card_->Initialize();
 
 	///
 	cardOperator_ = std::make_unique<CardOperator>();
-	///
+	/// 
 	cardOperator_->Initialize();
 
 	// スプライト読み込み

@@ -1,6 +1,8 @@
 ﻿#pragma once
 #include<Input.h>
-
+#include "DirectXCommon.h"
+#include "Sprite.h"
+#include <TextureManager.h>
 
 class Card {
 public:
@@ -23,11 +25,15 @@ public:
 	/// </summary>
 	void Draw();
 
-	void SetDecknumber(int decknumber) {decknumber_ = decknumber; }
+	void SetCardNumber(int decknumber) {cardnumber_ = decknumber; }
+
+	enum CradType {
+		
+	};
 
 private:
 	/// 山札用のランダム変数
-	int decknumber_ = 1;
+	int cardnumber_ = 1;
 	/// カードを捨てる
 	int dispose_;
 	/// カードを取る
@@ -43,4 +49,11 @@ private:
 	///バフカード
 	bool isBufcard_ = false;
 
+private:
+	DirectXCommon* dxCommon_ = nullptr;
+	/// カードテクスチャ
+	uint32_t cardTexture_[4] = {0,0,0,0};
+	// スプライト
+	Sprite* cardSprite_[4] = {nullptr, nullptr, nullptr, nullptr};
+	
 };

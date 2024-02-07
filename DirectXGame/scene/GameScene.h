@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Audio.h"
 #include "DirectXCommon.h"
 #include "Input.h"
@@ -81,7 +80,6 @@ private: // メンバ変数
 	Vector2 HPsize;
 	/// 山札
 	std::unique_ptr<Card> card_;
-
 	/// 
 	std::unique_ptr<CardOperator> cardOperator_;
 
