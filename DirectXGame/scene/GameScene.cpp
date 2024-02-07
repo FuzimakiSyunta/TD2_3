@@ -15,11 +15,6 @@ void GameScene::Initialize() {
 	dxCommon_ = DirectXCommon::GetInstance();
 	input_ = Input::GetInstance();
 	audio_ = Audio::GetInstance();
-	/// 山札の生成
-	card_ = std::make_unique<Card>();
-	
-	///山札
-	card_->Initialize();
 
 	/// 
 	cardOperator_ = std::make_unique<CardOperator>();
@@ -40,8 +35,6 @@ void GameScene::Initialize() {
 void GameScene::Update() 
 {
 	///最初のカード動作
-	cardOperator_->FarstTakeUpdate();
-	///カード更新
 	cardOperator_->Update();
 	///カードを捨てる
 	cardOperator_->TrashUpdate();
