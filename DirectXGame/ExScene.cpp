@@ -1,5 +1,11 @@
 ﻿#include "ExScene.h"
+// コンストラクタ
+ExScene::ExScene() {}
 
+// デストラクタ
+//ExScene::~ExScene() { delete spriteEx_; }
+
+// 初期化
 void ExScene::Initialize() {
 	dxCommon_ = DirectXCommon::GetInstance();
 	input_ = Input::GetInstance();
@@ -11,14 +17,17 @@ void ExScene::Initialize() {
 
 void ExScene::Updata() { // ゲームパッドの状態を得る変数
 	XINPUT_STATE joyState;
+
 	if (Input::GetInstance()->GetJoystickState(0, joyState)) {
 		if (joyState.Gamepad.wButtons == XINPUT_GAMEPAD_A) {
 			Sleep(1 * 300);
 			isSceneEnd = true;
 		}
 	}
+	Sleep(1 * 120);
 }
 
+// 描画
 void ExScene::Draw() {
 	// コマンドリストの取得
 	ID3D12GraphicsCommandList* commandList = dxCommon_->GetCommandList();
@@ -58,6 +67,8 @@ void ExScene::Draw() {
 	/// <summary>
 	/// ここに前景スプライトの描画処理を追加できる
 	/// </summary>
+
+	spriteEx_->Draw();
 
 	// スプライト描画後処理
 	Sprite::PostDraw();

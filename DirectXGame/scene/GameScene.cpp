@@ -35,6 +35,12 @@ void GameScene::Initialize() {
 	textureHandle_ = TextureManager::Load("gauge/Stamina.png");
 	gaugeFrame_ = TextureManager::Load("gauge/gaugeFrame.png");
 	HPgaugeTexture_ = TextureManager::Load("gauge/HPGauge.png");
+	// テクスチャロード
+	exTexture_ = TextureManager::Load("Ex.png");
+	//説明画像の描画設定
+	/*exSprite_ = Sprite::Create(exTexture_, {0, 0});
+	exScene_ = std::make_unique<ExScene>();
+	exScene_->Initialize();*/
 
 	exTexture_ = TextureManager::Load("Ex.png");
 
@@ -106,6 +112,8 @@ void GameScene::Update()
 	object3_->Update();
 	//敵キャラの更新　
 	enemy_->Update();
+	//説明シーンの更新
+	exScene_->Update();
 	ground_->Update();
 	//カード操作
 	cardOperator_->Update();
@@ -173,6 +181,7 @@ void GameScene::Draw() {
 	object1_->Draw(viewProjection_);
 	object2_->Draw(viewProjection_);
 	object3_->Draw(viewProjection_);
+
 
 	// 3Dオブジェクト描画後処理
 	Model::PostDraw();

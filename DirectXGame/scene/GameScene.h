@@ -106,6 +106,10 @@ private: // メンバ変数
 	//ゲージ枠
 	std::unique_ptr<Gauge> frame_;
 	//HPゲージ
+	//説明シーン
+	std::unique_ptr<ExScene> exScene_;
+	//説明スプライト
+	Sprite* spriteEx_;
 	std::unique_ptr<Gauge> HPgauge_;
 	
 	// 3Dモデル
@@ -161,4 +165,5 @@ private: // メンバ変数
 	std::unique_ptr<Model> modelJar_;
 	// 棚3Dモデル
 	std::unique_ptr<Model> modelShelf_;
+
 };

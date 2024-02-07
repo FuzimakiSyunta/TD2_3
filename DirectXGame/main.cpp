@@ -7,6 +7,7 @@
 #include "TextureManager.h"
 #include "WinApp.h"
 #include "TitleScene.h"
+#include "ExScene.h"
 #include "ClearScene.h"
 #include "OverScene.h"
 #include "gauge.h"
@@ -21,6 +22,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	AxisIndicator* axisIndicator = nullptr;
 	PrimitiveDrawer* primitiveDrawer = nullptr;
 	GameScene* gameScene = nullptr;
+	ExScene* exScene = nullptr;
 	TitleScene* titleScene = nullptr;
 	ClearScene* clearScene = nullptr;
 	OverScene* overScene = nullptr;
@@ -65,6 +67,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	primitiveDrawer = PrimitiveDrawer::GetInstance();
 	primitiveDrawer->Initialize();
 #pragma endregion
+
 
 	// ゲームシーンの初期化
 	gameScene = new GameScene();

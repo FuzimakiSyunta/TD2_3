@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include "Audio.h"
 #include "DirectXCommon.h"
 #include "Input.h"
 #include "Model.h"
@@ -17,12 +18,14 @@ public:
 
 	bool IsSceneEnd() { return isSceneEnd; }
 
+	// 次のシーンをゲームプレイシーンへ
 	SceneType NextScene() { return SceneType::kGame; }
 
 	void Reset();
 
 private:
 	DirectXCommon* dxCommon_ = nullptr;
+
 	Input* input_ = nullptr;
 
 	// シーンを終わらせるフラグ
