@@ -90,7 +90,7 @@ void CardOperator::Update() {
 			}
 		}
 		/// 5枚手札を用意
-		if (TakeCount_ == 5) {
+		if (TakeCount_ == 2) {
 			Handslimit_ = true;
 		}
 		
