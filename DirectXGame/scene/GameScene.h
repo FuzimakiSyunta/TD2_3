@@ -14,6 +14,7 @@
 #include "Object2.h"
 #include "Object3.h"
 #include "ExScene.h"
+#include "Ground.h"
 #include <Scene.h>
 
 /// <summary>
@@ -102,6 +103,10 @@ private: // メンバ変数
 	//HPゲージ
 	std::unique_ptr<Gauge> HPgauge_;
 	
+	// 3Dモデル
+	std::unique_ptr<Model> groundModel_ = nullptr;
+	// 地面
+	std::unique_ptr<Ground> ground_;
 
 	//3Dモデル
 	std::unique_ptr<Model> model_;

@@ -83,6 +83,13 @@ void GameScene::Initialize() {
 	modelShelf_.reset(Model::CreateFromOBJ("shelf", true));
 	// オブジェクト３の初期化
 	object3_->Initialize(modelJar_.get(), modelShelf_.get());
+
+	// 地面の生成
+	ground_ = std::make_unique<Ground>();
+	// 3Dモデルの生成
+	groundModel_.reset(Model::CreateFromOBJ("ground", true));
+	// 地面の初期化
+	ground_->Initialize(groundModel_.get());
 }
 
 void GameScene::Update() 
@@ -93,7 +100,7 @@ void GameScene::Update()
 	object3_->Update();
 	//敵キャラの更新　
 	enemy_->Update();
-
+	ground_->Update();
 	//カード操作
 	cardOperator_->Update();
 
@@ -103,7 +110,7 @@ void GameScene::Update()
 	size = sprite_->GetSize();
 	size.x = gauge_->GetGauge();
 	sprite_->SetSize(size);
-	//gauge_->Update();
+	gauge_->Update();
 
 	//HPバーのサイズ変更
 	HPsize = HPsprite_->GetSize();
@@ -154,6 +161,7 @@ void GameScene::Draw() {
 	/// 
 
 	
+	ground_->Draw(viewProjection_);
 	skydome_->Draw(viewProjection_);
 	enemy_->Draw(viewProjection_);
 	object1_->Draw(viewProjection_);
