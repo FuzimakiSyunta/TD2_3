@@ -8,10 +8,10 @@ void Gauge::Initialize()
 	HPgauge = 500.0f;
 	//キー入力待機時間の初期化
 	keyCoolTime_ = 30;
+	gauge_ = 0.0f;
 	//シングルだから呼び出す
 	input_ = Input::GetInstance();
 }
-
 void Gauge::Update() 
 {	//キー入力待機時間の更新
 	if (keyCoolTime_ > 0) {
@@ -40,6 +40,12 @@ void Gauge::Update()
 			if (input_->PushKey(DIK_LEFT)) {
 				gauge -= 100.0f;
 				keyCoolTime_ = 30;
+{ 
+	if (gaugeCount == 0)
+	{
+		if (gauge_ <= 1000) {
+			if (input_->PushKey(DIK_SPACE)) {
+				gauge_ += 5.0f;
 			}
 			//Dキーを押したときに警戒値ゲージを50あげる
 			if (input_->PushKey(DIK_D)) {
@@ -54,6 +60,15 @@ void Gauge::Update()
 				keyCoolTime_ = 30;
 			}
 		}
+		}
+		if (gauge_ >= 1000)
+		{
+			gaugeCount = 1;
+		}
+	}
+	if (gaugeCount == 1)
+	{
+		
 	}
 	
 
