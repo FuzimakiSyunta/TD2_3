@@ -75,7 +75,7 @@ void GameScene::Update()
 
 	gauge_->Update();
 
-	objectBreak_->Update();
+	/*objectBreak_->Update();*/
 
 	//シーン切り替えのトリガー
 	if (input_->TriggerKey(DIK_0))//クリア条件
