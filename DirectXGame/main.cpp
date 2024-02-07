@@ -9,6 +9,7 @@
 #include "TitleScene.h"
 #include "ClearScene.h"
 #include "OverScene.h"
+#include "gauge.h"
 
 // Windowsアプリでのエントリーポイント(main関数)
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
@@ -23,6 +24,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	TitleScene* titleScene = nullptr;
 	ClearScene* clearScene = nullptr;
 	OverScene* overScene = nullptr;
+	Gauge* gauge = nullptr;
 
 	// ゲームウィンドウの作成
 	win = WinApp::GetInstance();
@@ -79,6 +81,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	overScene = new OverScene();
 	overScene->Initialize();
 
+	gauge = new Gauge();
+	gauge->Initialize();
+
 	SceneType sceneNo = SceneType::kTitle;
 
 	// メインループ
@@ -112,20 +117,25 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			//ゲームシーンの更新
 			gameScene->Update();
 
-			// シーンの切り替え処理＆ゲームシーンのリセット
-			if (gameScene->IsSceneEnd() == true && gameScene->ClearCount() == true)
+			gauge->Update();
+
+			if (gauge->IsHpEnd() == true)
 			{
-				//クリアシーンへ
 				sceneNo = gameScene->NextScene1();
 
 				gameScene->sceneReset();
+
+				gauge->GaugeReset();
 			}
-			if (gameScene->IsSceneEnd() == true && gameScene->ClearCount() == false)
+
+			if (gauge->IsGaugeEnd() == true)
 			{
 				//オーバーシーンへ
 				sceneNo = gameScene->NextScene2();
 
 				gameScene->sceneReset();
+
+				gauge->GaugeReset();
 			}
 
 			break;
@@ -182,6 +192,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			clearScene->Draw();
 			break;
 		case SceneType::kOver:
+			overScene->Draw();
 			break;
 		default:
 			break;

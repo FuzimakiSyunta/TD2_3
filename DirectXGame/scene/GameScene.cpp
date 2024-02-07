@@ -44,6 +44,13 @@ void GameScene::Initialize() {
 	HPgauge_ = std::make_unique<Gauge>();
 	HPgauge_->Initialize();
 
+	// 天球の生成
+	skydome_ = std::make_unique<Skydome>();
+	// 天球3Dモデルの生成
+	modelSkydome_.reset(Model::CreateFromOBJ("skydome", true));
+	// 天球の初期化
+	skydome_->Initialize(modelSkydome_.get(), Skydome_);
+
 	//敵の生成
 	enemy_ = std::make_unique<Enemy>();
 	//敵3Dモデルの作成
@@ -76,8 +83,7 @@ void GameScene::Initialize() {
 	// オブジェクト３の初期化
 	object3_->Initialize(modelJar_.get(), modelShelf_.get());
 
-	useCard = false;
-	useTimer = 0;
+
 }
 
 void GameScene::Update() 
@@ -89,20 +95,10 @@ void GameScene::Update()
 		
 	//敵キャラの更新　
 	enemy_->Update();
-
-	/// ゲームパッドの状態を得る変数
-	XINPUT_STATE joyState;
-	//カード使えるようにする
-	if (Input::GetInstance()->GetJoystickState(0, joyState)) {
-		if (joyState.Gamepad.wButtons == XINPUT_GAMEPAD_Y&&useCard==false) {
-			useCard = true;
-		}
-		if (useCard == true) {
-			// カード操作
-			cardOperator_->Update();
-		}
-	}
-
+	//カード操作
+	cardOperator_->Update();
+	//スカイドームの更新
+	skydome_->Update();
 
 
 	size = sprite_->GetSize();
@@ -119,6 +115,8 @@ void GameScene::Update()
 
 	gauge_->Update();
 
+	/*objectBreak_->Update();*/
+
 	//シーン切り替えのトリガー
 	if (input_->TriggerKey(DIK_0))//クリア条件
 	{
@@ -126,11 +124,10 @@ void GameScene::Update()
 		isSceneEnd = true;
 	}
 
-	if (input_->TriggerKey(DIK_1))//ゲームオーバー条件
-	{
-		clearCount = false;
-		isSceneEnd = true;
-	}
+	
+
+	
+
 
 }
 
@@ -160,7 +157,10 @@ void GameScene::Draw() {
 	/// <summary>
 	/// ここに3Dオブジェクトの描画処理を追加できる
 	/// </summary>
+	/// 
 
+	
+	skydome_->Draw(viewProjection_);
 	enemy_->Draw(viewProjection_);
 	object1_->Draw(viewProjection_);
 	object2_->Draw(viewProjection_);
@@ -178,8 +178,8 @@ void GameScene::Draw() {
 	/// ここに前景スプライトの描画処理を追加できる
 	/// </summary>
 
-	/*sprite_->Draw();
-	HPsprite_->Draw();*/
+	sprite_->Draw();
+	HPsprite_->Draw();
 
 	cardOperator_->Draw();
 	
