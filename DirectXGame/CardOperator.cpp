@@ -12,29 +12,29 @@ void CardOperator::Initialize() {
 	cardTexture_[2] = TextureManager::Load("BUFFcardBase.png");
 	cardTexture_[3] = TextureManager::Load("HEALcardBase.png");
 	///山札の総数20枚
-	//DEF
-	for (int i = 0; i < 5; i++) {
-		// デッキに入れる前に初期化をしてカードタイプ決めてる
-		Card* card = new Card();
-		card->Initialize(CardType::kDef, cardTexture_[static_cast<size_t>(CardType::kDef)]);
-		deck_.push_back(card);
-	}
 	//ATK
-	for (int i = 0; i < 10; i++) {
+	for (int i = 0; i < 16; i++) {
 		// デッキに入れる前に初期化をしてカードタイプ決めてる
 		Card* card = new Card();
 		card->Initialize(CardType::kAtk, cardTexture_[static_cast<size_t>(CardType::kAtk)]);
 		deck_.push_back(card);
 	}
+	//DEF
+	for (int i = 0; i < 12; i++) {
+		// デッキに入れる前に初期化をしてカードタイプ決めてる
+		Card* card = new Card();
+		card->Initialize(CardType::kDef, cardTexture_[static_cast<size_t>(CardType::kDef)]);
+		deck_.push_back(card);
+	}
 	//BUFF
-	for (int i = 0; i < 2; i++) {
+	for (int i = 0; i < 7; i++) {
 		// デッキに入れる前に初期化をしてカードタイプ決めてる
 		Card* card = new Card();
 		card->Initialize(CardType::kBuff, cardTexture_[static_cast<size_t>(CardType::kBuff)]);
 		deck_.push_back(card);
 	}
 	//HEAL
-	for (int i = 0; i < 3; i++) {
+	for (int i = 0; i < 5; i++) {
 		// デッキに入れる前に初期化をしてカードタイプ決めてる
 		Card* card = new Card();
 		card->Initialize(CardType::kHeal, cardTexture_[static_cast<size_t>(CardType::kHeal)]);
@@ -69,7 +69,7 @@ void CardOperator::TakeUpdate() {
 void CardOperator::Update() {
 	/// ゲームパッドの状態を得る変数
 	XINPUT_STATE joyState;
-	if (DeckCount_ < 20) {//
+	if (DeckCount_ < 40) {//
 		///
 		if (Input::GetInstance()->GetJoystickState(0, joyState)) {
 			if (joyState.Gamepad.wButtons == XINPUT_GAMEPAD_X) {
@@ -81,7 +81,7 @@ void CardOperator::Update() {
 				for (Card* card : hands_) {
 					Vector2 pos = {0, 0};
 					// 　変数で指定するか直性値入れるか
-					card->SetSpritePos({(float)(960 + i * 100), 540});
+					card->SetSpritePos({(float)(560 + i * 140), 540});
 					// card->SetSpritePos(pos);
 					i++;
 				}
