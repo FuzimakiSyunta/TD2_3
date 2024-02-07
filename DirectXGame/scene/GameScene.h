@@ -9,6 +9,7 @@
 #include "CardOperator.h"
 #include "Gauge.h"
 #include "Enemy.h"
+#include "SkyDome.h"
 #include "Object1.h"
 #include "Object2.h"
 #include "Object3.h"
@@ -110,6 +111,13 @@ private: // メンバ変数
 	std::unique_ptr<Card> card_;
 	/// 
 	std::unique_ptr<CardOperator> cardOperator_;
+
+	// 天球テクスチャハンドル
+	uint32_t Skydome_ = 0;
+	// 天球3Dモデル
+	std::unique_ptr<Model> modelSkydome_ = nullptr;
+	// 天球
+	std::unique_ptr<Skydome> skydome_ = nullptr;
 
 	//敵
 	std::unique_ptr<Enemy>enemy_ = nullptr;
