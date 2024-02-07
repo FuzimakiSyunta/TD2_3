@@ -16,7 +16,7 @@ void TitleScene::Initialize()
 	input_ = Input::GetInstance();
 
 	//テクスチャロード
-	uint32_t textureTitle = TextureManager::Load("uvChecker.png");
+	uint32_t textureTitle = TextureManager::Load("Title.png");
 
 	spriteTitle_ =
 	    Sprite::Create(textureTitle, {0.0f, 0.0f}, {1.0f, 1.0f, 1.0f, 1.0f}, {0.0f, 0.0f});
