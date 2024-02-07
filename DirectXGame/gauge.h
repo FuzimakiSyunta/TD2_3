@@ -35,4 +35,6 @@ private:
 
 	//ゲージのカウント
 	float gaugeCount = 0;
+
+	
 };

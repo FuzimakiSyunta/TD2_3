@@ -100,8 +100,8 @@ private: // メンバ変数
 	/// 山札
 	std::unique_ptr<Card> card_;
 
-	////オブジェクト
-	//std::unique_ptr<ObjectBreak> objectBreak_;
+	//オブジェクト
+	std::unique_ptr<ObjectBreak> objectBreak_;
 	/// 
 	std::unique_ptr<CardOperator> cardOperator_;
 	

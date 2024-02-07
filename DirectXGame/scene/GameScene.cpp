@@ -50,7 +50,7 @@ void GameScene::Initialize() {
 	objectBreak_->Initialize(modelObject_.get());
 
 
-	
+
 }
 
 void GameScene::Update() 
