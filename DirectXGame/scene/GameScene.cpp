@@ -95,8 +95,6 @@ void GameScene::Update()
 
 	gauge_->Update();
 
-	objectBreak_->Update();
-
 	//シーン切り替えのトリガー
 	if (input_->TriggerKey(DIK_0))//クリア条件
 	{
@@ -139,7 +137,7 @@ void GameScene::Draw() {
 	/// ここに3Dオブジェクトの描画処理を追加できる
 	/// </summary>
 
-	/*enemy_->Draw(viewProjection_);*/
+	enemy_->Draw(viewProjection_);
 	object1_->Draw(viewProjection_);
 	object2_->Draw(viewProjection_);
 

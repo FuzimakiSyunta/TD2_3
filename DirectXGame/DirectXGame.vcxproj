@@ -119,8 +119,10 @@
     <ClCompile Include="MyMath.cpp" />
     <ClCompile Include="Object1.cpp" />
     <ClCompile Include="Object2.cpp" />
+    <ClCompile Include="OverScene.cpp" />
     <ClCompile Include="scene\GameScene.cpp" />
     <ClCompile Include="TitleScene.cpp" />
+    <ClCompile Include="WorldTransformEx.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2d\ImGuiManager.h" />
@@ -161,7 +163,6 @@
     <ClInclude Include="MyMath.h" />
     <ClInclude Include="Object1.h" />
     <ClInclude Include="Object2.h" />
-    <ClInclude Include="ObjectBreak.h" />
     <ClInclude Include="OverScene.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Scene.h" />
