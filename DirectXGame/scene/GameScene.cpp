@@ -78,13 +78,13 @@ void GameScene::Update()
 	objectBreak_->Update();
 
 	//シーン切り替えのトリガー
-	if (input_->TriggerKey(DIK_0))
+	if (input_->TriggerKey(DIK_0))//クリア条件
 	{
 		clearCount = true;
 		isSceneEnd = true;
 	}
 
-	if (input_->TriggerKey(DIK_1))
+	if (input_->TriggerKey(DIK_1))//ゲームオーバー条件
 	{
 		clearCount = false;
 		isSceneEnd = true;
