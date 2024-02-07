@@ -18,4 +18,7 @@ private:
 	WorldTransform worldTransform_;
 	//モデル
 	Model* modelObject1_;
+
+	//オブジェクト1のHP
+	int object1HP = 5;
 };

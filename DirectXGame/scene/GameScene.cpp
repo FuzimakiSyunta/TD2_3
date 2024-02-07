@@ -103,6 +103,7 @@ void GameScene::Update()
 	exScene_->Update();
 	//カード操作
 	cardOperator_->Update();
+
 	//スカイドームの更新
 	skydome_->Update();
 
