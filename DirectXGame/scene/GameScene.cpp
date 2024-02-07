@@ -83,6 +83,7 @@ void GameScene::Initialize() {
 	// オブジェクト３の初期化
 	object3_->Initialize(modelJar_.get(), modelShelf_.get());
 
+	Time = 0;
 
 }
 
@@ -116,9 +117,9 @@ void GameScene::Update()
 	gauge_->Update();
 
 	/*objectBreak_->Update();*/
-
+	Time++;
 	//シーン切り替えのトリガー
-	if (input_->TriggerKey(DIK_0))//クリア条件
+	if (Time>100)//クリア条件
 	{
 		clearCount = true;
 		isSceneEnd = true;

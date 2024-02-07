@@ -28,6 +28,7 @@ public:
 
 	void SetSpritePos(Vector2 pos);
 
+	
 
 private:
 	// カード種類

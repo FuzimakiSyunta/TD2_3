@@ -31,6 +31,8 @@ public:
 
 	void SetType(int cardType_);
 
+	
+
 private:
 	/// カードの生成
 	Card* card_ = nullptr;
@@ -46,6 +48,7 @@ private:
 	//
 	int isAtc;
 	int isBuff;
+	int HandsNumber[2];
 
 	//引いた数
 	int TakeCount_;

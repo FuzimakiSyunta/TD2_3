@@ -32,7 +32,8 @@ void CardOperator::Initialize() {
 		card->Initialize(CardType::kBuff, cardTexture_[static_cast<size_t>(CardType::kBuff)]);
 		deck_.push_back(card);
 	}
-
+	isAtc = 0;
+	isBuff = 0;
 	//デッキのランダム
 	size_t length = deck_.size();
 	for (size_t i = length - 1; i > 0; --i) {
@@ -46,11 +47,11 @@ void CardOperator::Initialize() {
 	TakeCount_ = 0;
 	// 5枚でストップ
 	Handslimit_ = false;
-
-	isAtc=0;
-	isBuff=0;
-
-	Vector2 pos = {0, 0};
+	
+	for (int i = 0; i < 2; i++) {
+		HandsNumber[i] = false;
+	}
+	
 }
 
 void CardOperator::TakeUpdate() {
@@ -63,16 +64,18 @@ void CardOperator::TakeUpdate() {
 void CardOperator::Update() {
 	/// ゲームパッドの状態を得る変数
 	XINPUT_STATE joyState;
-	if (DeckCount_ < 40) {//
+	if (DeckCount_ < 20) {//
 		///
 		if (Input::GetInstance()->GetJoystickState(0, joyState)) {
 			if (joyState.Gamepad.wButtons == XINPUT_GAMEPAD_X) {
 				if (Handslimit_ == false) {
 					TakeUpdate(); // カードを追加
+					
 				}
 				int i = 0;
 				// 例　手札の描画用位置の設定
 				for (Card* card : hands_) {
+					Vector2 pos = {0, 0};
 					// 　変数で指定するか直性値入れるか
 					card->SetSpritePos({(float)(560 + i * 140), 540});
 					// card->SetSpritePos(pos);
@@ -83,24 +86,32 @@ void CardOperator::Update() {
 				if (joyState.Gamepad.wButtons == XINPUT_GAMEPAD_B) {
 					// どろー、deck_から手札にcard移動する
 					deck_.splice(deck_.end(), std::move(hands_), hands_.begin());
-					TakeCount_ -= 1 ;
+					TakeCount_ -= 1;
 					DeckCount_ -= 1;
+				    
 				}
-
 			}
 		}
-		/// 5枚手札を用意
+
+		/// 2枚手札を用意
 		if (TakeCount_ == 2) {
-			Handslimit_ = true;
+		    Handslimit_ = true;
+		}
+		if (TakeCount_ <= 0) {
+		    Handslimit_ = false;
 		}
 		
+		
+
 	}
+	
 #ifdef _DEBUG
 	// 画面の座標を表示
 	ImGui::Begin("Card");
 	ImGui::Text("DeckCount %d\n", DeckCount_);
 	ImGui::Text("TakeCount %d\n", TakeCount_);
 	ImGui::Text("isAtc %d\n", isAtc);
+	ImGui::Text("isBuff %d\n", isBuff);
 	ImGui::End();
 #endif !_DEBUG
 
@@ -118,6 +129,9 @@ void CardOperator::Draw() {
 void CardOperator::SetType(int cardType) { 
 	cardType_ = static_cast<CardType>(cardType); 
 }
+
+
+
 
 
 

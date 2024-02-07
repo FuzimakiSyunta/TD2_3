@@ -62,6 +62,7 @@ void Gauge::Update() { // キー入力待機時間の更新
 
 	if (gauge >= 700) { // ゲージオーバー
 		gaugeCount = 1;  // カウント１
+		
 	}
 
 	if (gaugeCount == 1) {

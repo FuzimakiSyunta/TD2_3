@@ -151,4 +151,6 @@ private: // メンバ変数
 	bool useCard;
 	//
 	int useTimer;
+
+	int Time;
 };
