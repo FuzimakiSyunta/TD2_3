@@ -6,6 +6,11 @@
 #include "PrimitiveDrawer.h"
 #include "TextureManager.h"
 #include "WinApp.h"
+#include "TitleScene.h"
+#include "ClearScene.h"
+#include "OverScene.h"
+
+
 
 // Windowsアプリでのエントリーポイント(main関数)
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
@@ -17,6 +22,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	AxisIndicator* axisIndicator = nullptr;
 	PrimitiveDrawer* primitiveDrawer = nullptr;
 	GameScene* gameScene = nullptr;
+	TitleScene* titleScene = nullptr;
+	ClearScene* clearScene = nullptr;
+	OverScene* overScene = nullptr;
 
 	// ゲームウィンドウの作成
 	win = WinApp::GetInstance();
@@ -61,6 +69,20 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	gameScene = new GameScene();
 	gameScene->Initialize();
 
+	//タイトルシーンの初期化																																																																																																																																														
+	titleScene = new TitleScene();
+	titleScene->Initialize();
+
+	// クリアシーンの初期化
+	clearScene = new ClearScene();
+	clearScene->Initialize();
+
+	// オーバーシーンの初期化
+	overScene = new OverScene();
+	overScene->Initialize();
+
+	SceneType sceneNo = SceneType::kTitle;
+
 	// メインループ
 	while (true) {
 		// メッセージ処理
@@ -72,8 +94,72 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		imguiManager->Begin();
 		// 入力関連の毎フレーム処理
 		input->Update();
-		// ゲームシーンの毎フレーム処理
-		gameScene->Update();
+
+		//ゲーム全体のシーン管理
+		switch (sceneNo) 
+		{
+		case SceneType::kTitle:
+			//タイトルシーン更新
+			titleScene->Update();
+
+			//シーンの切り替え処理＆タイトルシーンのリセット
+			if (titleScene->IsSceneEnd() == true)
+			{
+				sceneNo = titleScene->NextScene();
+
+				titleScene->SceneReset();
+			}
+			break;
+		case SceneType::kGame:
+			//ゲームシーンの更新
+			gameScene->Update();
+
+			// シーンの切り替え処理＆ゲームシーンのリセット
+			if (gameScene->IsSceneEnd() == true && gameScene->ClearCount() == true)
+			{
+				//クリアシーンへ
+				sceneNo = gameScene->NextScene1();
+
+				gameScene->sceneReset();
+			}
+			if (gameScene->IsSceneEnd() == true && gameScene->ClearCount() == false)
+			{
+				//オーバーシーンへ
+				sceneNo = gameScene->NextScene2();
+
+				gameScene->sceneReset();
+			}
+
+			break;
+		case SceneType::kClear:
+			//クリアシーンの更新
+			clearScene->Update();
+
+				// シーンの切り替え処理＆クリアシーンのリセット
+			if (clearScene->IsSceneEnd() == true) {
+				sceneNo = clearScene->NextScene();
+
+				clearScene->SceneReset();
+			}
+			break;
+		case SceneType::kOver:
+			// オーバーシーンの更新
+			overScene->Update();
+
+			// シーンの切り替え処理＆クリアシーンのリセット
+			if (overScene->IsSceneEnd() == true) {
+				sceneNo = overScene->NextScene();
+
+				overScene->SceneReset();
+			}
+			break;
+		default:
+			break;
+		}
+
+
+		//// ゲームシーンの毎フレーム処理
+		//gameScene->Update();
 		// 軸表示の更新
 		axisIndicator->Update();
 		// ImGui受付終了
@@ -81,8 +167,29 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 		// 描画開始
 		dxCommon->PreDraw();
-		// ゲームシーンの描画
-		gameScene->Draw();
+
+		//描画用swich文
+		switch (sceneNo) 
+		{
+		case SceneType::kTitle:
+			//タイトルシーンの描画
+			titleScene->Draw();
+			break;
+		case SceneType::kGame:
+			// ゲームシーンの描画
+			gameScene->Draw();
+			break;
+		case SceneType::kClear:
+			//クリアシーンの描画
+			clearScene->Draw();
+			break;
+		case SceneType::kOver:
+			break;
+		default:
+			break;
+		}
+
+		
 		// 軸表示の描画
 		axisIndicator->Draw();
 		// プリミティブ描画のリセット

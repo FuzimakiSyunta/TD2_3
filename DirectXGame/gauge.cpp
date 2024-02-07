@@ -69,6 +69,8 @@ void Gauge::Update()
 	if (HPgauge >= 500) {
 		HPgauge = 500;
 	}
+	
+	
 }
 
 void Gauge::Draw() {}

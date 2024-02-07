@@ -21,7 +21,7 @@ public:
 	//スプライトの幅
 	Vector2 size_ = {100.0f, 100.0f};
 	
-	float GetGauge() { return gauge; };
+	float GetGauge() { return gauge_; };
 
 	float GetHPgauge() { return HPgauge; };
 

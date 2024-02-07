@@ -22,7 +22,16 @@ void GameScene::Initialize() {
 	///山札
 	card_->Initialize();
 
-	///
+	//ワールドトランスフォーム
+	worldTransform_.Initialize();
+
+	//ビュープロジェクション
+	viewProjection_.Initialize();
+
+	//3Dモデルの生成
+	model_.reset(Model::Create());
+
+	/// 
 	cardOperator_ = std::make_unique<CardOperator>();
 	/// 
 	cardOperator_->Initialize();
@@ -94,7 +103,23 @@ void GameScene::Update()
 	object1_->Update();
 	object2_->Update();
 
-	/*viewProjection_.TransferMatrix();*/
+	gauge_->Update();
+
+	objectBreak_->Update();
+
+	//シーン切り替えのトリガー
+	if (input_->TriggerKey(DIK_0))//クリア条件
+	{
+		clearCount = true;
+		isSceneEnd = true;
+	}
+
+	if (input_->TriggerKey(DIK_1))//ゲームオーバー条件
+	{
+		clearCount = false;
+		isSceneEnd = true;
+	}
+
 }
 
 void GameScene::Draw() { 
@@ -147,4 +172,11 @@ void GameScene::Draw() {
 	Sprite::PostDraw();
 
 #pragma endregion
+}
+
+void GameScene::sceneReset() 
+{
+	isSceneEnd = false;
+	clearCount = false;
+	Initialize();
 }
