@@ -10,6 +10,7 @@
 #include "CardOperator.h"
 #include "Gauge.h"
 #include "Enemy.h"
+#include "ObjectBreak.h"
 #include "Object1.h"
 #include "Object2.h"
 
