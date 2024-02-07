@@ -46,8 +46,11 @@ void CardOperator::Initialize() {
 	TakeCount_ = 0;
 	// 5枚でストップ
 	Handslimit_ = false;
-	// 捨てた
-	isTrash_ = false;
+
+	isAtc=0;
+	isBuff=0;
+
+	Vector2 pos = {0, 0};
 }
 
 void CardOperator::TakeUpdate() {
@@ -70,7 +73,6 @@ void CardOperator::Update() {
 				int i = 0;
 				// 例　手札の描画用位置の設定
 				for (Card* card : hands_) {
-					Vector2 pos = {0, 0};
 					// 　変数で指定するか直性値入れるか
 					card->SetSpritePos({(float)(560 + i * 140), 540});
 					// card->SetSpritePos(pos);
@@ -84,9 +86,7 @@ void CardOperator::Update() {
 					TakeCount_ -= 1 ;
 					DeckCount_ -= 1;
 				}
-				if (TakeCount_ <= 0) {
-					Handslimit_ = false;
-				}
+
 			}
 		}
 		/// 5枚手札を用意
@@ -100,6 +100,7 @@ void CardOperator::Update() {
 	ImGui::Begin("Card");
 	ImGui::Text("DeckCount %d\n", DeckCount_);
 	ImGui::Text("TakeCount %d\n", TakeCount_);
+	ImGui::Text("isAtc %d\n", isAtc);
 	ImGui::End();
 #endif !_DEBUG
 

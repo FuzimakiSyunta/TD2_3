@@ -75,6 +75,9 @@ void GameScene::Initialize() {
 	modelShelf_.reset(Model::CreateFromOBJ("shelf", true));
 	// オブジェクト３の初期化
 	object3_->Initialize(modelJar_.get(), modelShelf_.get());
+
+	useCard = false;
+	useTimer = 0;
 }
 
 void GameScene::Update() 
@@ -83,10 +86,22 @@ void GameScene::Update()
 	object1_->Update();
 	object2_->Update();
 	object3_->Update();
+		
 	//敵キャラの更新　
 	enemy_->Update();
-	//カード操作
-	cardOperator_->Update();
+
+	/// ゲームパッドの状態を得る変数
+	XINPUT_STATE joyState;
+	//カード使えるようにする
+	if (Input::GetInstance()->GetJoystickState(0, joyState)) {
+		if (joyState.Gamepad.wButtons == XINPUT_GAMEPAD_Y&&useCard==false) {
+			useCard = true;
+		}
+		if (useCard == true) {
+			// カード操作
+			cardOperator_->Update();
+		}
+	}
 
 
 

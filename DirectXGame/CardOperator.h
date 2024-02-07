@@ -36,17 +36,19 @@ private:
 	Card* card_ = nullptr;
 
 	/// カードテクスチャ
-	uint32_t cardTexture_[4] = {0, 0, 0, 0};
+	uint32_t cardTexture_[3] = {0, 0, 0};
 
 	// 手札
 	std::list<Card*> hands_;
 	// デッキ
 	std::list<Card*> deck_;
 
+	//
+	int isAtc;
+	int isBuff;
+
 	//引いた数
 	int TakeCount_;
-	// 捨てた
-	bool isTrash_;
 	//5枚でストップ
 	bool Handslimit_;
 	//山札の枚数可視化

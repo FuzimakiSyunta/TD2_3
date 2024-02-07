@@ -134,4 +134,8 @@ private: // メンバ変数
 	std::unique_ptr<Model> modelJar_;
 	// 棚3Dモデル
 	std::unique_ptr<Model> modelShelf_;
+	//
+	bool useCard;
+	//
+	int useTimer;
 };

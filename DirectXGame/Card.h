@@ -5,7 +5,7 @@
 #include <TextureManager.h>
 
 
-enum class CardType { kAtk, kDef, kBuff, kHeal };
+enum class CardType { kAtk, kDef, kBuff };
 
 /// <summary>
 /// カード一枚の情報をまとめたクラス
@@ -19,12 +19,15 @@ public:
 	/// </summary>
 	void Initialize(CardType cardType, uint32_t textureHandle);
 
+	void Update();
+
 	/// <summary>
 	/// 描画
 	/// </summary>
 	void Draw();
 
 	void SetSpritePos(Vector2 pos);
+
 
 private:
 	// カード種類
