@@ -110,17 +110,19 @@
     <ClCompile Include="ATK.cpp" />
     <ClCompile Include="ClearScene.cpp" />
     <ClCompile Include="CardOperator.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Gauge.cpp" />
     <ClCompile Include="base\DirectXCommon.cpp" />
     <ClCompile Include="base\WinApp.cpp" />
     <ClCompile Include="Card.cpp" />
-    <ClCompile Include="Keisan.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="ObjectBreak.cpp" />
+    <ClCompile Include="MyMath.cpp" />
+    <ClCompile Include="Object1.cpp" />
+    <ClCompile Include="Object2.cpp" />
     <ClCompile Include="OverScene.cpp" />
-    <ClCompile Include="Scene.cpp" />
     <ClCompile Include="scene\GameScene.cpp" />
     <ClCompile Include="TitleScene.cpp" />
+    <ClCompile Include="WorldTransformEx.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2d\ImGuiManager.h" />
@@ -143,6 +145,8 @@
     <ClInclude Include="3d\WorldTransform.h" />
     <ClInclude Include="ATK.h" />
     <ClInclude Include="ClearScene.h" />
+    <ClInclude Include="CardOperator.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="Gauge.h" />
     <ClInclude Include="audio\Audio.h" />
     <ClInclude Include="base\DirectXCommon.h" />
@@ -152,12 +156,13 @@
     <ClInclude Include="base\WinApp.h" />
     <ClInclude Include="Card.h" />
     <ClInclude Include="input\Input.h" />
-    <ClInclude Include="Keisan.h" />
     <ClInclude Include="math\Matrix4x4.h" />
     <ClInclude Include="math\Vector2.h" />
     <ClInclude Include="math\Vector3.h" />
     <ClInclude Include="math\Vector4.h" />
-    <ClInclude Include="ObjectBreak.h" />
+    <ClInclude Include="MyMath.h" />
+    <ClInclude Include="Object1.h" />
+    <ClInclude Include="Object2.h" />
     <ClInclude Include="OverScene.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Scene.h" />

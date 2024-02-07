@@ -6,13 +6,13 @@
 #include "Sprite.h"
 #include "ViewProjection.h"
 #include "WorldTransform.h"
-#include "Card.h"
 #include "CardOperator.h"
 #include "Gauge.h"
-#include "ObjectBreak.h"
+#include "Enemy.h"
+#include "Object1.h"
+#include "Object2.h"
 
 #include <Scene.h>
-#include <ObjectBreak.h>
 
 /// <summary>
 /// ゲームシーン
@@ -76,18 +76,24 @@ private: // メンバ変数
 	
 	//テクスチャハンドル
 	uint32_t textureHandle_ = 0;
+	uint32_t HPgaugeTexture_ = 0;
 
 	//スプライト
 	Sprite* sprite_ = nullptr;
+	//HPスプライト
+	Sprite* HPsprite_ = nullptr;
+	//クリア画面のスプライト
+	Sprite* clearSprite_ = nullptr;
 
 	//ワールドトランスフォーム　
 	WorldTransform worldTransform_;
-
 	//ビュープロジェクション
 	ViewProjection viewProjection_;
 
 	//ゲージ
 	std::unique_ptr<Gauge> gauge_;
+	//HPゲージ
+	std::unique_ptr<Gauge> HPgauge_;
 
 	//3Dモデル
 	std::unique_ptr<Model> model_;
@@ -97,13 +103,29 @@ private: // メンバ変数
 
 	//表示の大きさ
 	Vector2 size;
+	//HPゲージの表示の大きさ
+	Vector2 HPsize;
 	/// 山札
 	std::unique_ptr<Card> card_;
 
-	//オブジェクト
-	std::unique_ptr<ObjectBreak> objectBreak_;
 	/// 
 	std::unique_ptr<CardOperator> cardOperator_;
-	
-	
+
+
+	//敵
+	std::unique_ptr<Enemy>enemy_ = nullptr;
+	//敵3Dモデル
+	std::unique_ptr<Model>modelEnemyHead_;
+
+	//オブジェクト１
+	std::unique_ptr<Object1> object1_;
+	//オブジェクト１3Dモデル
+	std::unique_ptr<Model> modelObject1_;
+
+	//ダイナマイト
+	std::unique_ptr<Object2> object2_;
+	// ダイナマイト3Dモデル
+	std::unique_ptr<Model> modelDynamite_;
+	//ボックス3Dモデル
+	std::unique_ptr<Model> modelBox_;
 };

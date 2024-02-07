@@ -21,9 +21,17 @@ public:
 	//スプライトの幅
 	Vector2 size_ = {100.0f, 100.0f};
 	
-	float GetGauge() { return gauge_; };
+	float GetGauge() { return gauge; };
+
+	float GetHPgauge() { return HPgauge; };
 
 private:
+	//キー入力待機用の変数
+	int keyCoolTime_;
+
+	//HPゲージの変数
+	int HPgauge_;
+
 	//キー
 	Input* input_ = nullptr;
 
@@ -37,4 +45,7 @@ private:
 	float gaugeCount = 0;
 
 	
+	float gauge;
+	//HPゲージ
+	float HPgauge;
 };
