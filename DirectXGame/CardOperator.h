@@ -19,11 +19,6 @@ public:
 	void Update();
 
 	/// <summary>
-	/// 手札動作初期化
-	/// </summary>
-	void TakeInitialize();
-
-	/// <summary>
 	/// 更新
 	/// </summary>
 	void TakeUpdate();
