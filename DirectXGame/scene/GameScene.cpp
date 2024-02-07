@@ -119,11 +119,17 @@ void GameScene::Update()
 
 	//スカイドームの更新
 	skydome_->Update();
-
-	size = sprite_->GetSize();
-	size.x = gauge_->GetGauge();
-	sprite_->SetSize(size);
-	gauge_->Update();
+	/// ゲームパッドの状態を得る変数
+	XINPUT_STATE joyState;
+	///
+	if (Input::GetInstance()->GetJoystickState(0, joyState)) {
+		if (joyState.Gamepad.wButtons == XINPUT_GAMEPAD_B) {
+			size = sprite_->GetSize();
+			size.x = gauge_->GetGauge();
+			sprite_->SetSize(size);
+			gauge_->Update();
+		}
+	}
 
 	//HPバーのサイズ変更
 	HPsize = HPsprite_->GetSize();

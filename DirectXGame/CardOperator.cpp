@@ -72,7 +72,7 @@ void CardOperator::Update() {
 				for (Card* card : hands_) {
 					Vector2 pos = {0, 0};
 					// 　変数で指定するか直性値入れるか
-					card->SetSpritePos({(float)(560 + i * 140), 540});
+					card->SetSpritePos({(float)(600 + i * 140), 750});
 					// card->SetSpritePos(pos);
 					i++;
 				}

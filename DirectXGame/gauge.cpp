@@ -9,8 +9,10 @@ void Gauge::Initialize()
 	gauge = 0.0f;
 	//シングルだから呼び出す
 	input_ = Input::GetInstance();
+	GameoverTime = 0;
 }
 void Gauge::Update() { // キー入力待機時間の更新
+	GameoverTime++;
 	if (keyCoolTime_ > 0) {
 		keyCoolTime_--;
 	} else if (keyCoolTime_ <= 0) {
@@ -29,13 +31,8 @@ void Gauge::Update() { // キー入力待機時間の更新
 					gauge += 1100.0f;
 					keyCoolTime_ = 30;
 				}
-				// Aキーを押したときに警戒値ゲージを50下げる
-				if (input_->PushKey(DIK_A)) {
-					gauge -= 50.0f;
-					keyCoolTime_ = 30;
-				}
 				// 左キーを押したときに警戒値ゲージを100下げる
-				if (input_->PushKey(DIK_LEFT)) {
+			    if (GameoverTime>50) {
 					gauge -= 100.0f;
 					keyCoolTime_ = 30;
 				}
@@ -43,14 +40,8 @@ void Gauge::Update() { // キー入力待機時間の更新
 					if (input_->PushKey(DIK_SPACE)) {
 						gauge_ += 5.0f;
 					}
-					// Dキーを押したときに警戒値ゲージを50あげる
-					if (input_->PushKey(DIK_D)) {
-						gauge += 50.0f;
-						HPgauge -= 30.0f;
-						keyCoolTime_ = 30;
-					}
 					// 右キーを押したときに警戒値ゲージを100上げる
-					if (input_->PushKey(DIK_RIGHT)) {
+					if (GameoverTime>100) {
 						gauge += 100.0f;
 						HPgauge -= 70.0f;
 						keyCoolTime_ = 30;
@@ -64,7 +55,7 @@ void Gauge::Update() { // キー入力待機時間の更新
 		gaugeCount = 1;  // カウント１
 	}
 
-	if (gaugeCount == 1) {
+	if (GameoverTime == 500) {
 		GaugeOver();
 	}
 

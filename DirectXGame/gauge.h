@@ -67,5 +67,5 @@ private:
 
 	float hpCount = 0;
 
-	
+	int GameoverTime;
 };
