@@ -37,13 +37,13 @@ private:
 
 	/// カードテクスチャ
 	uint32_t cardTexture_[4] = {0, 0, 0, 0};
-	// スプライト
-	Sprite* cardSprite_[4] = {nullptr, nullptr, nullptr, nullptr};
 
 	// 手札
 	std::list<Card*> hands_;
 	// デッキ
 	std::list<Card*> deck_;
+	// 墓地
+	std::list<Card*> cemetery_;
 
 	//引いた数
 	int TakeCount_;
