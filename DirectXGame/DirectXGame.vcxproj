@@ -116,6 +116,7 @@
     <ClCompile Include="Keisan.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ObjectBreak.cpp" />
+    <ClCompile Include="OverScene.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="scene\GameScene.cpp" />
     <ClCompile Include="TitleScene.cpp" />
@@ -156,6 +157,7 @@
     <ClInclude Include="math\Vector3.h" />
     <ClInclude Include="math\Vector4.h" />
     <ClInclude Include="ObjectBreak.h" />
+    <ClInclude Include="OverScene.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="scene\GameScene.h" />

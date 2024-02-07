@@ -1,15 +1,13 @@
-﻿#include "ClearScene.h"
+﻿#include "OverScene.h"
 
-//コンストラクタ
-ClearScene::ClearScene() {}
+// コンストラクタ
+OverScene::OverScene() {}
 
-//デストラクタ
-ClearScene::~ClearScene() 
-{ delete spriteOver_; }
+// デストラクタ
+OverScene::~OverScene() { delete spriteOver_; }
 
-//初期化
-void ClearScene::Initialize()
-{
+// 初期化
+void OverScene::Initialize() {
 	dxCommon_ = DirectXCommon::GetInstance();
 	input_ = Input::GetInstance();
 
@@ -21,7 +19,7 @@ void ClearScene::Initialize()
 }
 
 // 更新
-void ClearScene::Update() {
+void OverScene::Update() {
 	/// ゲームパッドの状態を得る変数
 	XINPUT_STATE joyState;
 
@@ -33,9 +31,8 @@ void ClearScene::Update() {
 	Sleep(1 * 120);
 }
 
-
 // 描画
-void ClearScene::Draw() {
+void OverScene::Draw() {
 	// コマンドリストの取得
 	ID3D12GraphicsCommandList* commandList = dxCommon_->GetCommandList();
 
@@ -79,4 +76,4 @@ void ClearScene::Draw() {
 }
 
 // シーンのリセット
-void ClearScene::SceneReset() { isSceneEnd = false; }
+void OverScene::SceneReset() { isSceneEnd = false; }

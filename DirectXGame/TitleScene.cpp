@@ -24,13 +24,19 @@ void TitleScene::Initialize()
 }
 
 // 更新
-void TitleScene::Update()
-{ 
-	if (input_->TriggerKey(DIK_SPACE))
-	{
-		isSceneEnd = true;
+void TitleScene::Update() {
+	/// ゲームパッドの状態を得る変数
+	XINPUT_STATE joyState;
+
+	if (Input::GetInstance()->GetJoystickState(0, joyState)) {
+		if (joyState.Gamepad.wButtons == XINPUT_GAMEPAD_A)
+		{
+			isSceneEnd = true;
+		}
 	}
+	Sleep(1 * 120);
 }
+
 
 // 描画
 void TitleScene::Draw()

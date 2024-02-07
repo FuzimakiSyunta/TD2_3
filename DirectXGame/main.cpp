@@ -8,6 +8,7 @@
 #include "WinApp.h"
 #include "TitleScene.h"
 #include "ClearScene.h"
+#include "OverScene.h"
 
 // Windowsアプリでのエントリーポイント(main関数)
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
@@ -21,6 +22,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	GameScene* gameScene = nullptr;
 	TitleScene* titleScene = nullptr;
 	ClearScene* clearScene = nullptr;
+	OverScene* overScene = nullptr;
 
 	// ゲームウィンドウの作成
 	win = WinApp::GetInstance();
@@ -73,6 +75,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	clearScene = new ClearScene();
 	clearScene->Initialize();
 
+	// オーバーシーンの初期化
+	overScene = new OverScene();
+	overScene->Initialize();
 
 	SceneType sceneNo = SceneType::kTitle;
 
@@ -136,6 +141,15 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			}
 			break;
 		case SceneType::kOver:
+			// オーバーシーンの更新
+			overScene->Update();
+
+			// シーンの切り替え処理＆クリアシーンのリセット
+			if (overScene->IsSceneEnd() == true) {
+				sceneNo = overScene->NextScene();
+
+				overScene->SceneReset();
+			}
 			break;
 		default:
 			break;

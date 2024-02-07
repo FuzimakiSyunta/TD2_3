@@ -1,4 +1,4 @@
-﻿//クリアシーンのヘッダファイル
+﻿// オーバーシーンのヘッダファイル
 #pragma once
 
 // ヘッダーファイルのインクルード
@@ -12,11 +12,10 @@
 #include "ViewProjection.h"
 #include "WorldTransform.h"
 
-class ClearScene 
-{
+class OverScene {
 public:
-	ClearScene();  // コンストラクタ
-	~ClearScene(); // デストラクタ
+	OverScene();  // コンストラクタ
+	~OverScene(); // デストラクタ
 
 	void Initialize(); // 初期化
 	void Update();     // 更新
