@@ -11,6 +11,7 @@
 #include "Enemy.h"
 #include "Object1.h"
 #include "Object2.h"
+#include "Object3.h"
 
 #include <Scene.h>
 
@@ -107,7 +108,6 @@ private: // メンバ変数
 	Vector2 HPsize;
 	/// 山札
 	std::unique_ptr<Card> card_;
-
 	/// 
 	std::unique_ptr<CardOperator> cardOperator_;
 
@@ -121,10 +121,17 @@ private: // メンバ変数
 	//オブジェクト１3Dモデル
 	std::unique_ptr<Model> modelObject1_;
 
-	//ダイナマイト
+	//オブジェクト２
 	std::unique_ptr<Object2> object2_;
 	// ダイナマイト3Dモデル
 	std::unique_ptr<Model> modelDynamite_;
 	//ボックス3Dモデル
 	std::unique_ptr<Model> modelBox_;
+
+	//オブジェクト３
+	std::unique_ptr<Object3> object3_;
+	//壺3Dモデル
+	std::unique_ptr<Model> modelJar_;
+	// 棚3Dモデル
+	std::unique_ptr<Model> modelShelf_;
 };
