@@ -9,6 +9,9 @@
 #include "Card.h"
 #include "CardOperator.h"
 #include "Gauge.h"
+#include "ObjectBreak.h"
+
+#include <Scene.h>
 
 /// <summary>
 /// ゲームシーン
@@ -41,6 +44,26 @@ public: // メンバ関数
 	/// </summary>
 	void Draw();
 
+public:
+
+	//シーンのリセット
+	void sceneReset();
+
+	bool isSceneEnd = false;
+
+	bool IsSceneEnd() { return isSceneEnd; }
+
+	// 次のシーンをゲームプレイシーンへ
+	SceneType NextScene1() { return SceneType::kClear; }
+
+	SceneType NextScene2() { return SceneType::kOver; }
+
+	//クリアしたならtrueにしClearシーンへ
+	//オーバーならそのままfalseでOverシ－ンへ
+	bool clearCount = false;
+
+	bool ClearCount() { return clearCount; }
+
 private: // メンバ変数
 	DirectXCommon* dxCommon_ = nullptr;
 	Input* input_ = nullptr;
@@ -65,10 +88,19 @@ private: // メンバ変数
 	//ゲージ
 	std::unique_ptr<Gauge> gauge_;
 
+	//3Dモデル
+	std::unique_ptr<Model> model_;
+
+	//オブジェクト
+	std::unique_ptr<Model> modelObject_;
+
 	//表示の大きさ
 	Vector2 size;
 	/// 山札
 	std::unique_ptr<Card> card_;
+
+	//オブジェクト
+	std::unique_ptr<ObjectBreak> objectBreak_;
 	/// 
 	std::unique_ptr<CardOperator> cardOperator_;
 	

@@ -21,6 +21,15 @@ void GameScene::Initialize() {
 	///山札
 	card_->Initialize();
 
+	//ワールドトランスフォーム
+	worldTransform_.Initialize();
+
+	//ビュープロジェクション
+	viewProjection_.Initialize();
+
+	//3Dモデルの生成
+	model_.reset(Model::Create());
+
 	/// 
 	cardOperator_ = std::make_unique<CardOperator>();
 	
@@ -34,6 +43,13 @@ void GameScene::Initialize() {
 	gauge_ = std::make_unique<Gauge>();
 	gauge_->Initialize();
 	
+
+	//3Dモデルのロード
+	modelObject_.reset(Model::CreateFromOBJ("syanderia", true));
+	objectBreak_ = std::make_unique<ObjectBreak>();
+	objectBreak_->Initialize(modelObject_.get());
+
+
 	
 }
 
@@ -58,6 +74,22 @@ void GameScene::Update()
 	sprite_->SetSize(size);
 
 	gauge_->Update();
+
+	objectBreak_->Update();
+
+	//シーン切り替えのトリガー
+	if (input_->TriggerKey(DIK_0))
+	{
+		clearCount = true;
+		isSceneEnd = true;
+	}
+
+	if (input_->TriggerKey(DIK_1))
+	{
+		clearCount = false;
+		isSceneEnd = true;
+	}
+
 }
 
 void GameScene::Draw() { 
@@ -86,6 +118,9 @@ void GameScene::Draw() {
 	/// <summary>
 	/// ここに3Dオブジェクトの描画処理を追加できる
 	/// </summary>
+	
+	//オブジェクト	
+	objectBreak_->Draw(viewProjection_);
 
 	// 3Dオブジェクト描画後処理
 	Model::PostDraw();
@@ -105,4 +140,11 @@ void GameScene::Draw() {
 	Sprite::PostDraw();
 
 #pragma endregion
+}
+
+void GameScene::sceneReset() 
+{
+	isSceneEnd = false;
+	clearCount = false;
+	Initialize();
 }
