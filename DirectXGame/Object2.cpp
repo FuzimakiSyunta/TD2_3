@@ -1,5 +1,5 @@
 ﻿#include "Object2.h"
-void Object2::Initialize(Model* modelDynamite,Model*modelBox) {
+void Object2::Initialize(Model* modelDynamite, Model* modelBox) {
 	modelDynamite_ = modelDynamite;
 	modelBox_ = modelBox;
 	// 初期化
@@ -15,8 +15,8 @@ void Object2::Initialize(Model* modelDynamite,Model*modelBox) {
 	worldTransformBox_.translation_ = {-30.0f, -10.0f, 10.0f};
 }
 
-void Object2::Update() { 
-	worldTransformDynamite_.UpdateMatrix(); 
+void Object2::Update() {
+	worldTransformDynamite_.UpdateMatrix();
 	worldTransformBox_.UpdateMatrix();
 };
 
