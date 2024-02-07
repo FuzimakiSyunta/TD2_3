@@ -11,6 +11,8 @@
 #include "CardOperator.h"
 #include "Gauge.h"
 #include "Enemy.h"
+#include "Object1.h"
+#include "Object2.h"
 
 /// <summary>
 /// ゲームシーン
@@ -88,4 +90,16 @@ private: // メンバ変数
 	std::unique_ptr<Enemy>enemy_ = nullptr;
 	//敵3Dモデル
 	std::unique_ptr<Model>modelEnemyHead_;
+
+	//オブジェクト１
+	std::unique_ptr<Object1> object1_;
+	//オブジェクト１3Dモデル
+	std::unique_ptr<Model> modelObject1_;
+
+	//ダイナマイト
+	std::unique_ptr<Object2> object2_;
+	// ダイナマイト3Dモデル
+	std::unique_ptr<Model> modelDynamite_;
+	//ボックス3Dモデル
+	std::unique_ptr<Model> modelBox_;
 };

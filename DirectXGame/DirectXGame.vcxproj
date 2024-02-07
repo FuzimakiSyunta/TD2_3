@@ -116,6 +116,8 @@
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MyMath.cpp" />
+    <ClCompile Include="Object1.cpp" />
+    <ClCompile Include="Object2.cpp" />
     <ClCompile Include="scene\GameScene.cpp" />
     <ClCompile Include="WorldTransformEx.cpp" />
   </ItemGroup>
@@ -155,6 +157,8 @@
     <ClInclude Include="math\Vector3.h" />
     <ClInclude Include="math\Vector4.h" />
     <ClInclude Include="MyMath.h" />
+    <ClInclude Include="Object1.h" />
+    <ClInclude Include="Object2.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="scene\GameScene.h" />
   </ItemGroup>
