@@ -20,7 +20,9 @@
 /// ゲームシーン
 /// </summary>
 class GameScene {
-
+/// <summary>
+/// ///
+/// </summary>
 public: // メンバ関数
 	/// <summary>
 	/// コンストクラタ
@@ -109,6 +111,9 @@ private: // メンバ変数
 	Vector2 HPsize;
 	/// 山札
 	std::unique_ptr<Card> card_;
+
+	////オブジェクト
+	//std::unique_ptr<ObjectBreak> objectBreak_;
 	/// 
 	std::unique_ptr<CardOperator> cardOperator_;
 

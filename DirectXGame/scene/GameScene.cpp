@@ -82,6 +82,8 @@ void GameScene::Initialize() {
 	modelShelf_.reset(Model::CreateFromOBJ("shelf", true));
 	// オブジェクト３の初期化
 	object3_->Initialize(modelJar_.get(), modelShelf_.get());
+
+
 }
 
 void GameScene::Update() 
@@ -114,6 +116,8 @@ void GameScene::Update()
 
 	gauge_->Update();
 
+	/*objectBreak_->Update();*/
+
 	//シーン切り替えのトリガー
 	if (input_->TriggerKey(DIK_0))//クリア条件
 	{
@@ -121,11 +125,10 @@ void GameScene::Update()
 		isSceneEnd = true;
 	}
 
-	if (input_->TriggerKey(DIK_1))//ゲームオーバー条件
-	{
-		clearCount = false;
-		isSceneEnd = true;
-	}
+	
+
+	
+
 
 }
 
@@ -155,7 +158,9 @@ void GameScene::Draw() {
 	/// <summary>
 	/// ここに3Dオブジェクトの描画処理を追加できる
 	/// </summary>
+	/// 
 
+	
 	skydome_->Draw(viewProjection_);
 	enemy_->Draw(viewProjection_);
 	object1_->Draw(viewProjection_);
@@ -174,8 +179,8 @@ void GameScene::Draw() {
 	/// ここに前景スプライトの描画処理を追加できる
 	/// </summary>
 
-	/*sprite_->Draw();
-	HPsprite_->Draw();*/
+	sprite_->Draw();
+	HPsprite_->Draw();
 
 	cardOperator_->Draw();
 	

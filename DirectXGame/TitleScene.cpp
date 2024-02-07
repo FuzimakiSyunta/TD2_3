@@ -90,5 +90,6 @@ void TitleScene::Draw()
 // シーンのリセット
 void TitleScene::SceneReset() 
 { 
+	Initialize();
 	isSceneEnd = false;
 }
